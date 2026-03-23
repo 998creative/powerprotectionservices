@@ -21,8 +21,8 @@ const brands: BrandItem[] = [
     name: "Riello",
     logoSrc: "/supplier-logos/riello-white.png",
     logoAlt: "Riello UPS supplier logo",
-    logoWidth: 190,
-    logoHeight: 52,
+    logoWidth: 210,
+    logoHeight: 62,
   },
   {
     name: "Borri",
@@ -44,7 +44,6 @@ const brands: BrandItem[] = [
     logoAlt: "Vertiv supplier logo",
     logoWidth: 140,
     logoHeight: 38,
-    note: "now Vertiv",
   },
 ];
 
