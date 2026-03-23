@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Source_Sans_3 } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const headingFont = Space_Grotesk({
+const appFont = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-heading",
-  subsets: ["latin"],
-});
-
-const bodyFont = Source_Sans_3({
-  variable: "--font-body",
   subsets: ["latin"],
 });
 
@@ -26,7 +22,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${headingFont.variable} ${bodyFont.variable} h-full antialiased`}
+      className={`${appFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>

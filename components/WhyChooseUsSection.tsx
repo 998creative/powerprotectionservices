@@ -28,22 +28,26 @@ const features: FeatureItem[] = [
 
 const WhyChooseUsSection = () => {
   return (
-    <section className="border-b border-white/10 bg-[#0d1016]">
-      <div className="mx-auto max-w-6xl px-6 py-18 md:py-24">
-        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+    <section id="why-us" className="border-b border-white/10 bg-[#0d1016]">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">Why Us</p>
+        <h2 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
           Why Choose Us
         </h2>
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-          {features.map((feature) => (
+        <div className="mt-11 grid gap-5 md:grid-cols-2">
+          {features.map((feature, index) => (
             <article
               key={feature.title}
-              className="rounded-xl border border-white/10 bg-[#101522] p-6 transition-colors hover:border-[#0066ff]/80"
+              className="rounded-2xl border border-white/10 bg-[#101726] p-7 transition-all hover:-translate-y-1 hover:border-[#0066ff]/70"
             >
+              <p className="text-xs font-semibold tracking-[0.2em] text-[#6fa7ff]">
+                {String(index + 1).padStart(2, "0")}
+              </p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/icon-placeholder.svg"
                 alt={`Placeholder icon for ${feature.title}`}
-                className="h-10 w-10"
+                className="mt-4 h-10 w-10"
               />
               <h3 className="mt-5 text-2xl font-semibold text-white">
                 {feature.title}

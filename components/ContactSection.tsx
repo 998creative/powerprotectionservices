@@ -1,16 +1,17 @@
 const ContactSection = () => {
   return (
-    <section id="contact" className="bg-[#090c13]">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-18 md:py-24 lg:grid-cols-[0.9fr_1.1fr]">
+    <section id="contact" className="relative overflow-hidden bg-[#090c13]">
+      <div className="pointer-events-none absolute right-[-14rem] top-20 h-96 w-96 rounded-full border border-white/10" />
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             Get in touch
           </h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-zinc-300">
             Tell us about your requirements and we&apos;ll come back with
             honest, unbiased advice.
           </p>
-          <div className="mt-8 space-y-4 rounded-xl border border-white/10 bg-[#0f141f] p-6">
+          <div className="mt-8 space-y-4 rounded-2xl border border-white/10 bg-[#0f141f] p-7">
             <p className="text-sm uppercase tracking-[0.18em] text-zinc-400">
               Direct Contact
             </p>
@@ -23,7 +24,7 @@ const ContactSection = () => {
           </div>
         </div>
 
-        <form className="rounded-xl border border-white/10 bg-[#0f141f] p-6 sm:p-8">
+        <form className="rounded-2xl border border-white/10 bg-[#0f141f] p-6 sm:p-8">
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="text-sm text-zinc-300">
               Name
