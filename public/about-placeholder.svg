@@ -1,0 +1,12 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0C111A"/>
+  <rect x="120" y="140" width="960" height="520" rx="18" fill="#111A2A" stroke="#2A3347" stroke-width="4"/>
+  <rect x="200" y="230" width="300" height="150" rx="10" fill="#0F1624" stroke="#3A4B67" stroke-width="3"/>
+  <rect x="540" y="230" width="440" height="26" rx="6" fill="#8CA4D9"/>
+  <rect x="540" y="276" width="380" height="18" rx="6" fill="#677792"/>
+  <rect x="540" y="306" width="300" height="18" rx="6" fill="#677792"/>
+  <rect x="200" y="420" width="780" height="160" rx="10" fill="#0E1420" stroke="#2E3B55" stroke-width="3"/>
+  <circle cx="930" cy="500" r="46" fill="#0066FF"/>
+  <path d="M926 474H934V496H956V504H934V526H926V504H904V496H926V474Z" fill="white"/>
+  <text x="200" y="705" fill="#8CA4D9" font-family="sans-serif" font-size="30">Image Placeholder</text>
+</svg>
