@@ -1,9 +1,47 @@
-const brands = [
-  "APC",
-  "Riello",
-  "Borri",
-  "Eaton Powerware",
-  "Emerson Network Power",
+import Image from "next/image";
+
+type BrandItem = {
+  name: string;
+  logoSrc?: string;
+  logoAlt?: string;
+  logoWidth?: number;
+  logoHeight?: number;
+  note?: string;
+};
+
+const brands: BrandItem[] = [
+  {
+    name: "APC",
+    logoSrc: "/supplier-logos/apc.png",
+    logoAlt: "APC supplier logo",
+    logoWidth: 180,
+    logoHeight: 58,
+  },
+  {
+    name: "Riello",
+    logoSrc: "/supplier-logos/riello-ups.png",
+    logoAlt: "Riello UPS supplier logo",
+    logoWidth: 150,
+    logoHeight: 44,
+  },
+  {
+    name: "Borri",
+  },
+  {
+    name: "Eaton Powerware",
+    logoSrc: "/supplier-logos/eaton.png",
+    logoAlt: "Eaton supplier logo",
+    logoWidth: 176,
+    logoHeight: 54,
+  },
+  {
+    name: "Emerson Network Power",
+    logoSrc: "/supplier-logos/vertiv.png",
+    logoAlt: "Vertiv supplier logo",
+    logoWidth: 148,
+    logoHeight: 38,
+    note: "now Vertiv",
+  },
 ];
 
 const TrustBar = () => {
@@ -17,10 +55,27 @@ const TrustBar = () => {
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {brands.map((brand) => (
               <div
-                key={brand}
-                className="rounded-md border border-white/10 bg-[#0d111a] px-3 py-3 text-center text-sm font-semibold text-zinc-200"
+                key={brand.name}
+                className="flex min-h-[5.5rem] flex-col items-center justify-center rounded-md border border-white/10 bg-[#0d111a] px-3 py-3 text-center text-sm font-semibold text-zinc-200"
               >
-                {brand}
+                {brand.logoSrc ? (
+                  <>
+                    <Image
+                      src={brand.logoSrc}
+                      alt={brand.logoAlt ?? `${brand.name} logo`}
+                      width={brand.logoWidth ?? 160}
+                      height={brand.logoHeight ?? 48}
+                      className="h-auto w-auto max-h-11 object-contain"
+                    />
+                    {brand.note ? (
+                      <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.15em] text-zinc-400">
+                        {brand.note}
+                      </span>
+                    ) : null}
+                  </>
+                ) : (
+                  <span className="text-base tracking-wide">{brand.name}</span>
+                )}
               </div>
             ))}
           </div>
