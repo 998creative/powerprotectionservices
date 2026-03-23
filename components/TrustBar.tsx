@@ -2,7 +2,7 @@ import Image from "next/image";
 
 type BrandItem = {
   name: string;
-  logoSrc?: string;
+  logoSrc: string;
   logoAlt?: string;
   logoWidth?: number;
   logoHeight?: number;
@@ -12,33 +12,37 @@ type BrandItem = {
 const brands: BrandItem[] = [
   {
     name: "APC",
-    logoSrc: "/supplier-logos/apc.png",
+    logoSrc: "/supplier-logos/apc-white.png",
     logoAlt: "APC supplier logo",
-    logoWidth: 180,
-    logoHeight: 58,
+    logoWidth: 188,
+    logoHeight: 48,
   },
   {
     name: "Riello",
-    logoSrc: "/supplier-logos/riello-ups.png",
+    logoSrc: "/supplier-logos/riello-white.png",
     logoAlt: "Riello UPS supplier logo",
-    logoWidth: 150,
-    logoHeight: 44,
+    logoWidth: 190,
+    logoHeight: 52,
   },
   {
     name: "Borri",
+    logoSrc: "/supplier-logos/borri-white.png",
+    logoAlt: "Borri supplier logo",
+    logoWidth: 148,
+    logoHeight: 38,
   },
   {
     name: "Eaton Powerware",
-    logoSrc: "/supplier-logos/eaton.png",
+    logoSrc: "/supplier-logos/eaton-white.png",
     logoAlt: "Eaton supplier logo",
     logoWidth: 176,
-    logoHeight: 54,
+    logoHeight: 48,
   },
   {
     name: "Emerson Network Power",
-    logoSrc: "/supplier-logos/vertiv.png",
+    logoSrc: "/supplier-logos/vertiv-white.png",
     logoAlt: "Vertiv supplier logo",
-    logoWidth: 148,
+    logoWidth: 140,
     logoHeight: 38,
     note: "now Vertiv",
   },
@@ -58,24 +62,18 @@ const TrustBar = () => {
                 key={brand.name}
                 className="flex min-h-[5.5rem] flex-col items-center justify-center rounded-md border border-white/10 bg-[#0d111a] px-3 py-3 text-center text-sm font-semibold text-zinc-200"
               >
-                {brand.logoSrc ? (
-                  <>
-                    <Image
-                      src={brand.logoSrc}
-                      alt={brand.logoAlt ?? `${brand.name} logo`}
-                      width={brand.logoWidth ?? 160}
-                      height={brand.logoHeight ?? 48}
-                      className="h-auto w-auto max-h-11 object-contain"
-                    />
-                    {brand.note ? (
-                      <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.15em] text-zinc-400">
-                        {brand.note}
-                      </span>
-                    ) : null}
-                  </>
-                ) : (
-                  <span className="text-base tracking-wide">{brand.name}</span>
-                )}
+                <Image
+                  src={brand.logoSrc}
+                  alt={brand.logoAlt ?? `${brand.name} logo`}
+                  width={brand.logoWidth ?? 160}
+                  height={brand.logoHeight ?? 48}
+                  className="h-auto w-auto max-h-11 object-contain"
+                />
+                {brand.note ? (
+                  <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.15em] text-zinc-400">
+                    {brand.note}
+                  </span>
+                ) : null}
               </div>
             ))}
           </div>
