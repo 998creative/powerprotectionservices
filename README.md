@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Power Protection Services Website (WordPress)
 
-## Getting Started
+This repository now deploys a **WordPress theme** (not the legacy Next.js app).
 
-First, run the development server:
+## Active Build
+
+- Active theme source: `wordpress-theme/power-protection-services/`
+- Theme package (for manual upload): `wordpress-theme/power-protection-services.zip`
+
+## Deployment (998 Toolkit Theme Deploy)
+
+Theme deployment is handled through your **998 Toolkit deploy method** using the GitHub repo secrets you added.
+
+Workflow file:
+
+- `.github/workflows/wp-theme-deploy.yml`
+
+Expected secrets:
+
+- `WP_DEPLOY_URL`
+- `WP_DEPLOY_TOKEN`
+
+Deploy behavior:
+
+1. Changes are pushed to the repo.
+2. Your deploy workflow/job packages the theme and calls the 998 deploy endpoint.
+3. The deploy step posts **only** `wordpress-theme/power-protection-services/` as a zip upload to `WP_DEPLOY_URL`, authenticated with `WP_DEPLOY_TOKEN`.
+
+The workflow is path-filtered so deployments only run when these change:
+
+- `wordpress-theme/power-protection-services/**`
+- `.github/workflows/wp-theme-deploy.yml`
+
+Example deploy request (matches `998-site-toolkit` endpoint):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+curl --request POST "$WP_DEPLOY_URL" \
+  --header "x-wp-deploy-token: $WP_DEPLOY_TOKEN" \
+  --form "theme_zip=@wordpress-theme/power-protection-services.zip;type=application/zip" \
+  --form "theme_slug=power-protection-services" \
+  --form "commit_sha=$GITHUB_SHA"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Important: Ignore Legacy Next.js App for Deploy
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The Next.js codebase remains in this repository for historical/reference purposes, but it is **not** part of live WordPress deployment.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Do not deploy from these paths:
 
-## Learn More
+- `app/`
+- `components/`
+- `lib/`
+- `public/`
+- `scripts/`
+- `package.json`, `next.config.ts`, Tailwind/TS configs, etc.
 
-To learn more about Next.js, take a look at the following resources:
+Only deploy:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `wordpress-theme/power-protection-services/**`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Recommended GitHub Actions filter:
 
-## Deploy on Vercel
+```yaml
+on:
+  push:
+    branches: [main]
+    paths:
+      - "wordpress-theme/power-protection-services/**"
+      - ".github/workflows/**"
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## WordPress Theme Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For page templates, slugs, manuals notes, and install details, see:
+
+- `wordpress-theme/power-protection-services/README.md`
