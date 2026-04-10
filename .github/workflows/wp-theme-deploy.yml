@@ -1,4 +1,4 @@
-name: Deploy WordPress Theme (998 Toolkit)
+name: Deploy PPS Theme
 
 on:
   push:
@@ -9,114 +9,39 @@ on:
       - ".github/workflows/wp-theme-deploy.yml"
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 concurrency:
-  group: wp-theme-deploy
+  group: pps-theme-deploy-live
   cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     env:
-      WP_DEPLOY_URL: ${{ secrets.WP_DEPLOY_URL }}
-      WP_DEPLOY_TOKEN: ${{ secrets.WP_DEPLOY_TOKEN }}
-      THEME_SOURCE: wordpress-theme/power-protection-services
+      THEME_DIR: wordpress-theme/power-protection-services
+      WP_THEME_SLUG: ${{ vars.WP_THEME_SLUG }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Validate required secrets
-        shell: bash
+      - name: Build theme zip
         run: |
-          set -euo pipefail
-          if [[ -z "${WP_DEPLOY_URL:-}" ]]; then
-            echo "Missing required secret: WP_DEPLOY_URL" >&2
-            exit 1
-          fi
-          if [[ -z "${WP_DEPLOY_TOKEN:-}" ]]; then
-            echo "Missing required secret: WP_DEPLOY_TOKEN" >&2
-            exit 1
-          fi
-
-      - name: Verify theme source exists
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -d "$THEME_SOURCE"
-
-      - name: Package theme artifact (debug/download)
-        shell: bash
-        run: |
-          set -euo pipefail
+          test -d "$THEME_DIR"
           cd wordpress-theme
-          zip -r power-protection-services.zip power-protection-services -x '*.DS_Store'
+          zip -r theme.zip power-protection-services -x '*.DS_Store'
 
-      - name: Upload packaged theme artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: power-protection-services-theme
-          path: wordpress-theme/power-protection-services.zip
-          if-no-files-found: error
-
-      - name: Verify deploy endpoint shape
-        shell: bash
+      - name: Deploy to WordPress
+        env:
+          WP_DEPLOY_URL: ${{ secrets.WP_DEPLOY_URL }}
+          WP_DEPLOY_TOKEN: ${{ secrets.WP_DEPLOY_TOKEN }}
         run: |
-          set -euo pipefail
-          case "$WP_DEPLOY_URL" in
-            */wp-json/wp-theme-deploy/v1/deploy) ;;
-            *)
-              echo "WP_DEPLOY_URL does not look like the 998 Site Toolkit deploy endpoint." >&2
-              echo "Expected path suffix: /wp-json/wp-theme-deploy/v1/deploy" >&2
-              exit 1
-              ;;
-          esac
+          test -n "$WP_DEPLOY_URL"
+          test -n "$WP_DEPLOY_TOKEN"
+          THEME_SLUG="${WP_THEME_SLUG:-power-protection-services}"
 
-      - name: Deploy WordPress theme
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          RESPONSE_FILE="$(mktemp)"
-
-          CURL_ARGS=(
-            --silent
-            --show-error
-            --output "$RESPONSE_FILE"
-            --write-out "%{http_code}"
-            --request POST
-            --header "x-wp-deploy-token: $WP_DEPLOY_TOKEN"
-            --form "theme_zip=@wordpress-theme/power-protection-services.zip;type=application/zip"
-            --form "theme_slug=power-protection-services"
-            --form "commit_sha=${GITHUB_SHA}"
-            "$WP_DEPLOY_URL"
-          )
-
-          HTTP_CODE="$(curl "${CURL_ARGS[@]}")"
-
-          echo "Deploy HTTP status: $HTTP_CODE"
-          echo "Deploy response:"
-          cat "$RESPONSE_FILE"
-
-          if [[ "$HTTP_CODE" -lt 200 || "$HTTP_CODE" -ge 300 ]]; then
-            echo "Deploy request failed with non-2xx status code." >&2
-            exit 1
-          fi
-
-          OK="$(
-            python3 - "$RESPONSE_FILE" <<'PY'
-import json, sys
-path = sys.argv[1]
-with open(path, "r", encoding="utf-8") as fh:
-    data = json.load(fh)
-print("true" if data.get("ok") is True else "false")
-PY
-          )"
-
-          if [[ "$OK" != "true" ]]; then
-            echo "Deploy endpoint returned ok=false." >&2
-            exit 1
-          fi
+          curl --fail --show-error --silent \
+            -X POST "$WP_DEPLOY_URL" \
+            -H "x-wp-deploy-token: $WP_DEPLOY_TOKEN" \
+            -F "theme_slug=${THEME_SLUG}" \
+            -F "commit_sha=${GITHUB_SHA}" \
+            -F "theme_zip=@wordpress-theme/theme.zip;type=application/zip"
