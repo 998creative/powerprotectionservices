@@ -2308,6 +2308,7 @@ img {
   width: fit-content;
   align-items: flex-start;
   gap: 8px;
+  font-size: 14px;
   line-height: 1.6;
   color: #c9d0dd;
 }
