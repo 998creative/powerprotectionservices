@@ -94,15 +94,9 @@ $support_image_map = [
             <span>Power Protection Services</span>
         </a>
 
-        <button class="pps-nav-toggle" type="button" aria-expanded="false" aria-controls="pps-primary-nav" aria-label="Toggle navigation menu">
-            <span class="screen-reader-text">Menu</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 7h16M4 12h16M4 17h16" stroke-width="2" stroke-linecap="round" />
-            </svg>
-        </button>
-
-        <nav id="pps-primary-nav" class="pps-nav" aria-label="Primary Navigation">
-            <ul class="pps-nav-list">
+        <div class="pps-header-nav-wrap">
+            <nav id="pps-primary-nav" class="pps-nav" aria-label="Primary Navigation">
+                <ul class="pps-nav-list">
                 <li class="pps-nav-item pps-has-mega">
                     <button class="pps-nav-trigger" type="button" aria-expanded="false">Services
                         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -217,10 +211,71 @@ $support_image_map = [
                 </li>
 
                 <li class="pps-nav-item"><a href="<?php echo esc_url(home_url('/about/')); ?>">About Us</a></li>
-                <li class="pps-nav-item"><a href="<?php echo esc_url(home_url('/contact/')); ?>">Contact</a></li>
-            </ul>
-            <a class="pps-btn pps-btn-primary" href="<?php echo esc_url(home_url('/contact/#contact')); ?>">Book a Free Site Survey</a>
-        </nav>
+                </ul>
+
+                <div class="pps-mobile-nav" data-mobile-nav>
+                    <button class="pps-mobile-nav-trigger" type="button" data-mobile-nav-toggle="services" aria-expanded="false">
+                        <span>Services</span>
+                        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="m5 8 5 5 5-5" stroke-width="1.8" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                    <div class="pps-mobile-nav-panel" data-mobile-nav-panel="services" hidden>
+                        <?php foreach ($services as $item) : ?>
+                            <a href="<?php echo esc_url($item['href']); ?>"><?php echo esc_html($item['title']); ?></a>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <button class="pps-mobile-nav-trigger" type="button" data-mobile-nav-toggle="who-we-help" aria-expanded="false">
+                        <span>Who We Help</span>
+                        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="m5 8 5 5 5-5" stroke-width="1.8" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                    <div class="pps-mobile-nav-panel" data-mobile-nav-panel="who-we-help" hidden>
+                        <a href="<?php echo esc_url(home_url('/who-we-help/')); ?>">View all sectors</a>
+                        <?php foreach ($sectors as $item) : ?>
+                            <a href="<?php echo esc_url($item['href']); ?>"><?php echo esc_html($item['title']); ?></a>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <button class="pps-mobile-nav-trigger" type="button" data-mobile-nav-toggle="support" aria-expanded="false">
+                        <span>Support</span>
+                        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="m5 8 5 5 5-5" stroke-width="1.8" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                    <div class="pps-mobile-nav-panel" data-mobile-nav-panel="support" hidden>
+                        <?php foreach ($support as $item) : ?>
+                            <?php if (! empty($item['disabled'])) : ?>
+                                <span class="pps-mobile-nav-disabled"><?php echo esc_html($item['title']); ?> (Coming soon)</span>
+                            <?php else : ?>
+                                <a href="<?php echo esc_url($item['href']); ?>"><?php echo esc_html($item['title']); ?></a>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <a class="pps-mobile-nav-link" href="<?php echo esc_url(home_url('/about/')); ?>">About Us</a>
+
+                    <div class="pps-mobile-nav-actions">
+                        <a class="pps-btn pps-btn-secondary" href="<?php echo esc_url(home_url('/contact/')); ?>">Contact</a>
+                        <a class="pps-btn pps-btn-primary" href="<?php echo esc_url(home_url('/contact/#contact')); ?>">Book a Free Site Survey</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="pps-header-actions">
+                <a class="pps-btn pps-btn-secondary" href="<?php echo esc_url(home_url('/contact/')); ?>">Contact</a>
+                <a class="pps-btn pps-btn-primary" href="<?php echo esc_url(home_url('/contact/#contact')); ?>">Book a Free Site Survey</a>
+            </div>
+        </div>
+
+        <button class="pps-nav-toggle" type="button" aria-expanded="false" aria-controls="pps-primary-nav" aria-label="Toggle navigation menu">
+            <span class="screen-reader-text">Menu</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
     </div>
 </header>
 <main class="pps-main">

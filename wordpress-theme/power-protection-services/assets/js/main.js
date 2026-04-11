@@ -3,12 +3,60 @@
     const nav = document.getElementById('pps-primary-nav');
     const navToggle = document.querySelector('.pps-nav-toggle');
     const isDesktopViewport = () => window.matchMedia('(min-width: 1024px)').matches;
+    const mobileNavRoot =
+      nav instanceof HTMLElement ? nav.querySelector('[data-mobile-nav]') : null;
+    const mobileNavTriggers =
+      mobileNavRoot instanceof HTMLElement
+        ? Array.from(mobileNavRoot.querySelectorAll('[data-mobile-nav-toggle]'))
+        : [];
+    const mobileNavPanels =
+      mobileNavRoot instanceof HTMLElement
+        ? Array.from(mobileNavRoot.querySelectorAll('[data-mobile-nav-panel]'))
+        : [];
+
+    const closeMobilePanels = (exceptKey = null) => {
+      mobileNavTriggers.forEach((trigger) => {
+        if (!(trigger instanceof HTMLButtonElement)) {
+          return;
+        }
+
+        const key = trigger.getAttribute('data-mobile-nav-toggle');
+        const isOpen = key !== null && key === exceptKey;
+        trigger.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      mobileNavPanels.forEach((panel) => {
+        if (!(panel instanceof HTMLElement)) {
+          return;
+        }
+
+        const key = panel.getAttribute('data-mobile-nav-panel');
+        const isOpen = key !== null && key === exceptKey;
+        panel.hidden = !isOpen;
+      });
+    };
+
+    const closeMobileMenu = () => {
+      if (navToggle instanceof HTMLElement) {
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      if (nav instanceof HTMLElement) {
+        nav.classList.remove('pps-open');
+      }
+
+      closeMobilePanels();
+    };
 
     if (nav && navToggle) {
       navToggle.addEventListener('click', () => {
         const expanded = navToggle.getAttribute('aria-expanded') === 'true';
         navToggle.setAttribute('aria-expanded', String(!expanded));
         nav.classList.toggle('pps-open', !expanded);
+
+        if (expanded) {
+          closeMobilePanels();
+        }
       });
     }
 
@@ -116,6 +164,38 @@
       }
     });
 
+    mobileNavTriggers.forEach((trigger) => {
+      if (!(trigger instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      trigger.addEventListener('click', () => {
+        const key = trigger.getAttribute('data-mobile-nav-toggle');
+        if (!key) {
+          return;
+        }
+
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        closeMobilePanels(isExpanded ? null : key);
+      });
+    });
+
+    if (nav instanceof HTMLElement) {
+      const navLinks = Array.from(nav.querySelectorAll('a'));
+      navLinks.forEach((link) => {
+        if (!(link instanceof HTMLAnchorElement)) {
+          return;
+        }
+
+        link.addEventListener('click', () => {
+          closeAllMenus();
+          if (!isDesktopViewport()) {
+            closeMobileMenu();
+          }
+        });
+      });
+    }
+
     document.addEventListener('click', (event) => {
       if (!event.target || !(event.target instanceof Node)) {
         return;
@@ -130,21 +210,19 @@
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         closeAllMenus();
+        closeMobileMenu();
       }
     });
 
     window.addEventListener('resize', () => {
       if (isDesktopViewport()) {
-        if (navToggle instanceof HTMLElement) {
-          navToggle.setAttribute('aria-expanded', 'false');
-        }
-        if (nav instanceof HTMLElement) {
-          nav.classList.remove('pps-open');
-        }
+        closeMobileMenu();
       } else {
         closeAllMenus();
       }
     });
+
+    closeMobilePanels();
   };
 
   const initHomeSliders = () => {

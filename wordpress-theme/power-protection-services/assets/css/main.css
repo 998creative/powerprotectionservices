@@ -68,6 +68,7 @@ img {
 .pps-header {
   position: sticky;
   top: 0;
+  inset-inline: 0;
   z-index: 70;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background: #090b12;
@@ -131,7 +132,19 @@ img {
 .pps-nav {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
   gap: 32px;
+}
+
+.pps-header-nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 28px;
 }
 
 .pps-nav-list {
@@ -141,6 +154,21 @@ img {
   display: flex;
   align-items: center;
   gap: 32px;
+}
+
+.pps-mobile-nav {
+  display: none;
+}
+
+.pps-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.pps-header-actions .pps-btn {
+  white-space: nowrap;
 }
 
 .pps-nav-item {
@@ -2782,6 +2810,15 @@ img {
     display: none;
   }
 
+  .pps-header-actions {
+    display: none;
+  }
+
+  .pps-header-nav-wrap {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
   .pps-nav {
     position: absolute;
     top: calc(100% + 1px);
@@ -2802,40 +2839,90 @@ img {
   }
 
   .pps-nav-list {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 6px;
+    display: none;
   }
 
-  .pps-nav-item {
-    width: 100%;
+  .pps-mobile-nav {
+    display: grid;
+    gap: 4px;
   }
 
-  .pps-nav-item > a,
-  .pps-nav-trigger {
+  .pps-mobile-nav-trigger,
+  .pps-mobile-nav-link {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     text-align: left;
-    padding: 8px 0;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #e4e7ef;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.015em;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .pps-mobile-nav-trigger:hover,
+  .pps-mobile-nav-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+
+  .pps-mobile-nav-trigger svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentcolor;
+    transition: transform 0.2s ease;
+  }
+
+  .pps-mobile-nav-trigger[aria-expanded='true'] svg {
+    transform: rotate(180deg);
+  }
+
+  .pps-mobile-nav-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin: 0 0 4px 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 10px;
+  }
+
+  .pps-mobile-nav-panel a,
+  .pps-mobile-nav-disabled {
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #c1c6d3;
+    font-size: 14px;
+    line-height: 1.45;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .pps-mobile-nav-panel a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+
+  .pps-mobile-nav-disabled {
+    color: #6c7486;
+  }
+
+  .pps-mobile-nav-actions {
+    margin-top: 10px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .pps-mobile-nav-actions .pps-btn {
+    width: 100%;
   }
 
   .pps-mega {
-    position: static;
-    transform: none;
-    width: 100%;
-    margin-top: 8px;
-    box-shadow: none;
-  }
-
-  .pps-mega-grid-3,
-  .pps-mega-grid-4 {
-    grid-template-columns: 1fr;
-  }
-
-  .pps-mega-card {
-    min-height: 132px;
+    display: none !important;
   }
 
   .pps-hero-inner {
