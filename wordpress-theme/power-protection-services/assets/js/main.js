@@ -703,8 +703,72 @@
       });
   };
 
+  const initFooterAccordion = () => {
+    const roots = Array.from(document.querySelectorAll('[data-footer-accordion]'));
+
+    roots.forEach((root) => {
+      if (!(root instanceof HTMLElement)) {
+        return;
+      }
+
+      const triggers = Array.from(root.querySelectorAll('[data-footer-toggle]'));
+      const panels = Array.from(root.querySelectorAll('[data-footer-panel]'));
+
+      if (triggers.length === 0 || panels.length === 0) {
+        return;
+      }
+
+      const openPanel = (key) => {
+        triggers.forEach((trigger) => {
+          if (!(trigger instanceof HTMLButtonElement)) {
+            return;
+          }
+          const isActive = trigger.getAttribute('data-footer-toggle') === key;
+          trigger.setAttribute('aria-expanded', String(isActive));
+        });
+
+        panels.forEach((panel) => {
+          if (!(panel instanceof HTMLElement)) {
+            return;
+          }
+          const isActive = panel.getAttribute('data-footer-panel') === key;
+          panel.hidden = !isActive;
+        });
+      };
+
+      const defaultTrigger = triggers.find(
+        (trigger) =>
+          trigger instanceof HTMLButtonElement &&
+          trigger.getAttribute('aria-expanded') === 'true'
+      );
+      const defaultKey =
+        defaultTrigger instanceof HTMLButtonElement
+          ? defaultTrigger.getAttribute('data-footer-toggle')
+          : triggers[0]?.getAttribute('data-footer-toggle');
+
+      if (defaultKey) {
+        openPanel(defaultKey);
+      }
+
+      triggers.forEach((trigger) => {
+        if (!(trigger instanceof HTMLButtonElement)) {
+          return;
+        }
+
+        trigger.addEventListener('click', () => {
+          const key = trigger.getAttribute('data-footer-toggle');
+          if (!key) {
+            return;
+          }
+          openPanel(key);
+        });
+      });
+    });
+  };
+
   initNavigation();
   initHomeSliders();
   initHomeContactForm();
   initManuals();
+  initFooterAccordion();
 })();
