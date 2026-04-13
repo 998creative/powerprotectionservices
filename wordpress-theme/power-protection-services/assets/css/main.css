@@ -3134,6 +3134,12 @@ img {
 }
 
 @media (max-width: 640px) {
+  .pps-trustbar-grid .pps-trustbar-item:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, calc((100% - 12px) / 2));
+  }
+
   .pps-home-who-actions {
     align-items: stretch;
   }
