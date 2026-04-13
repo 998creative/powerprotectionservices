@@ -3010,6 +3010,10 @@ img {
     min-height: 24rem;
   }
 
+  .pps-home-testimonial-card {
+    min-height: 24rem;
+  }
+
   .pps-home-sector-content {
     gap: 8px;
     padding: 10px;
