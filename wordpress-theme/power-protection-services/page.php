@@ -15,7 +15,13 @@ $description = get_the_excerpt() ?: 'Content for this page can be added in WordP
 $hero_background = 'hero/hero-datacenter-brett-4508751.jpg';
 
 get_header();
-get_template_part('partials/hero');
+get_template_part('partials/hero', null, [
+    'eyebrow' => $eyebrow ?? '',
+    'title' => $title ?? '',
+    'description' => $description ?? '',
+    'hero_background' => $hero_background ?? '',
+    'hero_actions' => $hero_actions ?? [],
+]);
 ?>
 <section class="pps-section pps-section-light">
     <div class="pps-container pps-prose">

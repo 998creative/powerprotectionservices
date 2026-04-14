@@ -34,7 +34,13 @@ $blocks = is_array($sector['blocks'] ?? null) ? $sector['blocks'] : [];
 $other_sectors = pps_other_sectors_data($slug);
 
 get_header();
-get_template_part('partials/hero');
+get_template_part('partials/hero', null, [
+    'eyebrow' => $eyebrow ?? '',
+    'title' => $title ?? '',
+    'description' => $description ?? '',
+    'hero_background' => $hero_background ?? '',
+    'hero_actions' => $hero_actions ?? [],
+]);
 ?>
 <section class="pps-section pps-section-light pps-section-muted">
     <div class="pps-container">

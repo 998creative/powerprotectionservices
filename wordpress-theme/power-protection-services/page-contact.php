@@ -33,7 +33,13 @@ $maps_href = 'https://www.google.com/maps/search/?api=1&query=Power+Protection+S
 $maps_embed_src = 'https://www.google.com/maps?q=Power+Protection+Services+Ltd,+Unit+2+Neates+Yard,+Hungerford,+Berkshire+RG17+0NB&output=embed';
 
 get_header();
-get_template_part('partials/hero');
+get_template_part('partials/hero', null, [
+    'eyebrow' => $eyebrow ?? '',
+    'title' => $title ?? '',
+    'description' => $description ?? '',
+    'hero_background' => $hero_background ?? '',
+    'hero_actions' => $hero_actions ?? [],
+]);
 ?>
 <section id="contact" class="pps-section pps-home-contact">
     <div class="pps-home-contact-ring"></div>

@@ -12,8 +12,13 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-$hero_background = isset($hero_background) ? (string) $hero_background : '';
-$hero_actions = isset($hero_actions) && is_array($hero_actions) ? $hero_actions : [];
+$hero_args = isset($args) && is_array($args) ? $args : [];
+
+$eyebrow = isset($hero_args['eyebrow']) ? (string) $hero_args['eyebrow'] : '';
+$title = isset($hero_args['title']) ? (string) $hero_args['title'] : '';
+$description = isset($hero_args['description']) ? (string) $hero_args['description'] : '';
+$hero_background = isset($hero_args['hero_background']) ? (string) $hero_args['hero_background'] : '';
+$hero_actions = isset($hero_args['hero_actions']) && is_array($hero_args['hero_actions']) ? $hero_args['hero_actions'] : [];
 ?>
 <section class="pps-hero<?php echo $hero_background !== '' ? ' pps-hero-has-bg' : ''; ?>">
     <?php if ($hero_background !== '') : ?>
