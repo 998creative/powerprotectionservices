@@ -2436,11 +2436,13 @@ img {
 }
 
 .pps-footer h4 {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 12px;
-  color: #9ca4b6;
+  line-height: 1rem;
+  font-weight: 400;
+  color: #a1a1aa;
 }
 
 .pps-footer p {
