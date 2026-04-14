@@ -2712,10 +2712,6 @@ body.pps-site .pps-footer h4 {
   display: grid;
 }
 
-.pps-about-cards-mobile {
-  display: none;
-}
-
 body.page-about .pps-hero {
   min-height: 36rem;
 }
@@ -3293,10 +3289,6 @@ body.page-about .pps-hero {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .pps-about-cards-desktop-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .pps-footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3537,10 +3529,6 @@ body.page-about .pps-hero {
     grid-template-columns: 1fr;
   }
 
-  .pps-about-cards-desktop-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .pps-section-intro {
     font-size: var(--pps-type-body);
     line-height: var(--pps-line-body);
@@ -3581,66 +3569,6 @@ body.page-about .pps-hero {
 
   body.page-about .pps-hero-media img {
     object-position: center 30%;
-  }
-
-  .pps-about-cards-desktop-copy,
-  .pps-about-cards-desktop-grid {
-    display: none;
-  }
-
-  .pps-about-cards-mobile {
-    display: block;
-    margin-top: 0;
-  }
-
-  .pps-about-cards-mobile-sticky {
-    position: sticky;
-    top: 80px;
-    z-index: 10;
-    padding-top: 46px;
-  }
-
-  .pps-about-cards .pps-about-cards-mobile-sticky .pps-eyebrow {
-    color: #5f759e;
-  }
-
-  .pps-about-cards .pps-about-cards-mobile-sticky h2 {
-    margin-top: 12px;
-    color: #0b1324;
-    font-size: var(--pps-type-heading);
-    line-height: 1.14;
-    letter-spacing: -0.015em;
-  }
-
-  .pps-about-cards-mobile-stage {
-    margin-top: 20px;
-    position: relative;
-    width: 100%;
-    height: 20rem;
-  }
-
-  .pps-about-cards-mobile-card {
-    position: absolute;
-    inset: 0;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-    will-change: transform, opacity;
-  }
-
-  .pps-about-cards .pps-about-cards-mobile-card {
-    border: 1px solid #d6dff0;
-    background: #f8fbff;
-  }
-
-  .pps-about-cards .pps-about-cards-mobile-card h3 {
-    color: #0b1324;
-  }
-
-  .pps-about-cards .pps-about-cards-mobile-card p {
-    color: #41547a;
-  }
-
-  .pps-about-cards-mobile-track {
-    pointer-events: none;
   }
 
   .pps-about-cards .pps-section-intro {
