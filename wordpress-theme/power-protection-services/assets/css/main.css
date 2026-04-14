@@ -2439,11 +2439,11 @@ body.pps-site .pps-footer h4 {
   margin: 0 0 16px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  font-weight: 400;
+  font-size: var(--pps-type-eyebrow);
+  line-height: 1.35;
+  font-weight: 500;
   font-family: 'Poppins', sans-serif;
-  color: #a1a1aa;
+  color: #5f759e;
 }
 
 .pps-footer p {
