@@ -18,6 +18,11 @@
   --pps-type-hero: 3rem;
   --pps-type-hero-md: 3.75rem;
   --pps-type-hero-lg: 4.5rem;
+  --pps-type-card-title: 2rem;
+  --pps-type-card-title-md: 1.8rem;
+  --pps-type-card-title-sm: 1.6875rem;
+  --pps-type-card-title-compact: 1.5rem;
+  --pps-line-card-title: 1.2;
 }
 
 * {
@@ -710,8 +715,9 @@ img {
 .pps-image-card h3,
 .pps-support-card h3 {
   margin: 0;
-  font-size: 28px;
-  line-height: 1.1;
+  font-size: var(--pps-type-card-title);
+  line-height: var(--pps-line-card-title);
+  letter-spacing: -0.01em;
   color: var(--pps-text-dark);
 }
 
@@ -1606,8 +1612,8 @@ img {
 .pps-home-service-card h3 {
   margin: 0;
   color: #0b1324;
-  font-size: 2rem;
-  line-height: 1.25;
+  font-size: var(--pps-type-card-title);
+  line-height: var(--pps-line-card-title);
   letter-spacing: -0.01em;
 }
 
@@ -1934,8 +1940,8 @@ img {
 .pps-home-why-card h3 {
   margin: 1.05rem 0 0;
   color: #fff;
-  font-size: 1.5rem;
-  line-height: 1.25;
+  font-size: var(--pps-type-card-title-compact);
+  line-height: var(--pps-line-card-title);
 }
 
 .pps-home-why-card p {
@@ -2604,8 +2610,9 @@ img {
 
 .pps-about-timeline-list h3 {
   margin: 8px 0 0;
-  font-size: 28px;
-  line-height: 1.1;
+  font-size: var(--pps-type-card-title);
+  line-height: var(--pps-line-card-title);
+  letter-spacing: -0.01em;
   color: #0b1324;
 }
 
@@ -2665,8 +2672,8 @@ img {
 .pps-sector-slide-card h3 {
   margin: 0;
   color: #0b1324;
-  font-size: 36px;
-  line-height: 1.05;
+  font-size: var(--pps-type-card-title);
+  line-height: var(--pps-line-card-title);
   letter-spacing: -0.01em;
 }
 
@@ -2731,8 +2738,8 @@ img {
 
 .pps-aftercare-card h3 {
   margin: 16px 0 0;
-  font-size: 36px;
-  line-height: 1.05;
+  font-size: var(--pps-type-card-title);
+  line-height: var(--pps-line-card-title);
   letter-spacing: -0.01em;
   color: #0b1324;
 }
@@ -2785,13 +2792,13 @@ img {
 }
 
 @media (max-width: 1200px) {
-  .pps-home-service-card h3 {
-    font-size: 1.8rem;
-  }
-
+  .pps-home-service-card h3,
   .pps-sector-slide-card h3,
-  .pps-aftercare-card h3 {
-    font-size: 31px;
+  .pps-aftercare-card h3,
+  .pps-image-card h3,
+  .pps-support-card h3,
+  .pps-about-timeline-list h3 {
+    font-size: var(--pps-type-card-title-md);
   }
 
   .pps-card-grid-3,
@@ -2860,8 +2867,11 @@ img {
 
   .pps-sector-slide-card h3,
   .pps-aftercare-card h3,
-  .pps-about-timeline-list h3 {
-    font-size: 27px;
+  .pps-about-timeline-list h3,
+  .pps-home-service-card h3,
+  .pps-image-card h3,
+  .pps-support-card h3 {
+    font-size: var(--pps-type-card-title-sm);
   }
 
   .pps-home-why-grid {
