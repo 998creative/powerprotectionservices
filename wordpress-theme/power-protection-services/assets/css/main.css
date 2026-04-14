@@ -2703,9 +2703,12 @@ body.pps-site .pps-footer h4 {
   z-index: 1;
 }
 
-.pps-about-cards-desktop-copy,
-.pps-about-cards-desktop-grid {
+.pps-about-cards-desktop-copy {
   display: block;
+}
+
+.pps-about-cards-desktop-grid {
+  display: grid;
 }
 
 .pps-about-cards-mobile {
