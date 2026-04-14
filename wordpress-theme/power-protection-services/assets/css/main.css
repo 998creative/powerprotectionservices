@@ -45,6 +45,12 @@ body.pps-site {
   background: var(--pps-bg);
   color: var(--pps-text);
   font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis-weight: none;
   line-height: 1.5;
   overflow-x: clip;
 }
@@ -882,6 +888,15 @@ img {
   color: var(--pps-text-dark);
   line-height: 1.1;
   font-weight: 600;
+}
+
+.pps-prose h2 + p,
+.pps-prose h3 + p {
+  margin-top: 28px;
+}
+
+.pps-prose p + p {
+  margin-top: 16px;
 }
 
 .pps-prose a {
