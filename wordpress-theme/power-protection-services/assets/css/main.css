@@ -11,8 +11,8 @@
   --pps-border: #d6dff0;
   --pps-accent: #0066ff;
   --pps-type-eyebrow: 0.875rem;
-  --pps-type-body: 1.125rem;
-  --pps-line-body: 1.625;
+  --pps-type-body: 1.15625rem;
+  --pps-line-body: 1.68;
   --pps-type-heading: 2.25rem;
   --pps-type-heading-md: 3rem;
   --pps-type-hero: 3rem;
@@ -66,6 +66,7 @@ body.pps-site h5,
 body.pps-site h6 {
   font-family: inherit;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 a {
@@ -659,7 +660,8 @@ img {
 .pps-section h2 {
   margin: 0;
   font-size: var(--pps-type-heading);
-  line-height: 1.2;
+  line-height: 1.14;
+  letter-spacing: -0.015em;
   color: inherit;
 }
 
@@ -674,6 +676,7 @@ img {
   color: var(--pps-muted);
   font-size: var(--pps-type-body);
   line-height: var(--pps-line-body);
+  font-weight: 300;
 }
 
 .pps-card-grid {
@@ -743,6 +746,7 @@ img {
   color: var(--pps-muted);
   font-size: var(--pps-type-body);
   line-height: var(--pps-line-body);
+  font-weight: 300;
 }
 
 .pps-image-card .pps-btn,
@@ -893,9 +897,11 @@ img {
 
 .pps-prose h2,
 .pps-prose h3 {
+  margin: 0;
   color: var(--pps-text-dark);
   line-height: 1.1;
   font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .pps-prose h2 + p,
