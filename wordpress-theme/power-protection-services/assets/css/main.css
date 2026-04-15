@@ -2848,7 +2848,7 @@ body.page-about .pps-hero {
 .pps-about-timeline-list li::before {
   content: '';
   position: absolute;
-  left: -48px;
+  left: -47px;
   top: 4px;
   width: 16px;
   height: 16px;
@@ -3043,18 +3043,18 @@ body.page-about .pps-hero {
   }
 
   .pps-about-timeline-list {
-    --pps-timeline-card-width: calc(100vw - 72px);
-    --pps-timeline-first-dot-center: 58px;
+    --pps-timeline-card-width: calc(100vw - 48px);
+    --pps-timeline-first-dot-center: 1px;
     position: relative;
     display: flex;
     gap: 16px;
-    margin: 0 -24px;
-    padding: 52px 24px 20px 30px;
+    margin: 0;
+    padding: 52px 0 44px;
     border-left: 0;
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
-    scroll-padding-left: 30px;
+    scroll-padding-left: 0;
     touch-action: pan-x;
     overscroll-behavior-y: contain;
     scrollbar-width: none;
@@ -3077,7 +3077,7 @@ body.page-about .pps-hero {
     width: calc(
       (var(--pps-timeline-count, 1) * var(--pps-timeline-card-width)) +
       ((var(--pps-timeline-count, 1) - 1) * 16px) -
-      40px
+      12px
     );
   }
 
@@ -3099,7 +3099,7 @@ body.page-about .pps-hero {
   }
 
   .pps-about-timeline-list li:first-child::before {
-    left: 20px;
+    left: -7px;
     transform: none;
   }
 
@@ -3119,15 +3119,15 @@ body.page-about .pps-hero {
 
 @media (max-width: 640px) {
   .pps-about-timeline-list {
-    --pps-timeline-card-width: calc(100vw - 56px);
-    --pps-timeline-first-dot-center: 52px;
-    margin: 0 -18px;
-    padding: 52px 18px 20px 24px;
-    scroll-padding-left: 24px;
+    --pps-timeline-card-width: calc(100vw - 48px);
+    --pps-timeline-first-dot-center: 1px;
+    margin: 0;
+    padding: 52px 0 44px;
+    scroll-padding-left: 0;
   }
 
   .pps-about-timeline-list li {
-    flex-basis: calc(100vw - 56px);
+    flex-basis: calc(100vw - 48px);
   }
 }
 
@@ -3772,7 +3772,7 @@ body.page-about .pps-hero {
     width: calc(
       (var(--pps-timeline-count, 1) * var(--pps-timeline-card-width)) +
       ((var(--pps-timeline-count, 1) - 1) * 16px) -
-      40px
+      12px
     );
   }
 
