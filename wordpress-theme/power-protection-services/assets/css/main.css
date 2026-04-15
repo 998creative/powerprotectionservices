@@ -2715,6 +2715,10 @@ body.pps-site .pps-footer h4 {
   display: none;
 }
 
+.pps-about-cards-mobile-intro {
+  display: none;
+}
+
 body.page-about .pps-hero {
   min-height: 36rem;
 }
@@ -3580,6 +3584,10 @@ body.page-about .pps-hero {
     margin-top: 76px;
   }
 
+  .pps-about-cards-desktop-intro {
+    display: none;
+  }
+
   .pps-about-cards-desktop-copy,
   .pps-about-cards-desktop-grid {
     display: none;
@@ -3623,6 +3631,14 @@ body.page-about .pps-hero {
 
   .pps-about-cards-mobile-track {
     pointer-events: none;
+  }
+
+  .pps-about-cards-mobile-intro {
+    display: block;
+    margin-top: 76px;
+    transform: translateY(0);
+    opacity: 1;
+    will-change: transform, opacity;
   }
 
   .pps-home-why {

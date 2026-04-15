@@ -170,6 +170,9 @@ get_template_part('partials/hero', null, [
                         </article>
                     <?php endforeach; ?>
                 </div>
+                <p class="pps-section-intro pps-about-cards-mobile-intro" data-about-stack-intro>
+                    Our customers include universities, hospitals, city and county councils, corporate organisations, electrical contractors, IT resellers, project management companies and consultants. Our goal is always the same: the highest level of service and support by combining practical expertise with dedicated care.
+                </p>
             </div>
             <div
                 class="pps-about-cards-mobile-track"
@@ -178,7 +181,7 @@ get_template_part('partials/hero', null, [
                 aria-hidden="true"
             ></div>
         </div>
-        <p class="pps-section-intro" data-about-stack-intro>
+        <p class="pps-section-intro pps-about-cards-desktop-intro">
             Our customers include universities, hospitals, city and county councils, corporate organisations, electrical contractors, IT resellers, project management companies and consultants. Our goal is always the same: the highest level of service and support by combining practical expertise with dedicated care.
         </p>
     </div>

@@ -994,11 +994,7 @@
         const stage = stack.querySelector('[data-why-stack-stage]');
         const track = stack.querySelector('[data-why-stack-track]');
         const cards = Array.from(stack.querySelectorAll('[data-why-card]'));
-        const stackContainer = stack.parentElement;
-        const aboutIntro =
-          stackContainer instanceof HTMLElement
-            ? stackContainer.querySelector('[data-about-stack-intro]')
-            : null;
+        const aboutIntro = stack.querySelector('[data-about-stack-intro]');
 
         if (
           !(stage instanceof HTMLElement) ||
