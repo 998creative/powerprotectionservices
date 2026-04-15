@@ -2711,6 +2711,10 @@ body.pps-site .pps-footer h4 {
   display: grid;
 }
 
+.pps-about-cards-mobile {
+  display: none;
+}
+
 body.page-about .pps-hero {
   min-height: 36rem;
 }
@@ -2759,31 +2763,6 @@ body.page-about .pps-hero {
 .pps-about-cards .pps-section-intro {
   margin-top: 56px;
   max-width: 68ch;
-}
-
-/* Defensive guard: About cards should always be normal cards, never stack/pin. */
-body.page-about .pps-about-cards [data-about-stack],
-body.page-about .pps-about-cards [data-why-stack],
-body.page-about .pps-about-cards .pps-about-cards-mobile {
-  display: none !important;
-}
-
-body.page-about .pps-about-cards .pps-card-grid {
-  overflow: visible !important;
-}
-
-body.page-about .pps-about-cards .pps-card {
-  position: static !important;
-  overflow: visible !important;
-  transform: none !important;
-  opacity: 1 !important;
-}
-
-body.page-about .pps-about-cards,
-body.page-about .pps-about-cards .pps-container,
-body.page-about .pps-about-cards .pps-about-cards-desktop-grid {
-  overflow: visible !important;
-  overscroll-behavior: auto !important;
 }
 
 .pps-about-timeline {
@@ -3599,6 +3578,47 @@ body.page-about .pps-about-cards .pps-about-cards-desktop-grid {
 
   .pps-about-cards .pps-section-intro {
     margin-top: 24px;
+  }
+
+  .pps-about-cards-desktop-copy,
+  .pps-about-cards-desktop-grid {
+    display: none;
+  }
+
+  .pps-about-cards-mobile {
+    display: block;
+  }
+
+  .pps-about-cards-mobile-sticky {
+    position: sticky;
+    top: 80px;
+    z-index: 10;
+  }
+
+  .pps-about-cards-mobile-sticky .pps-eyebrow {
+    color: #4f6287;
+  }
+
+  .pps-about-cards-mobile-sticky h2 {
+    margin-top: 12px;
+  }
+
+  .pps-about-cards-mobile-stage {
+    margin-top: 18px;
+    position: relative;
+    width: 100%;
+    height: 32rem;
+  }
+
+  .pps-about-cards-mobile-card {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    will-change: transform, opacity;
+  }
+
+  .pps-about-cards-mobile-track {
+    pointer-events: none;
   }
 
   .pps-home-why {

@@ -155,6 +155,29 @@ get_template_part('partials/hero', null, [
                 </article>
             <?php endforeach; ?>
         </div>
+        <div class="pps-about-cards-mobile" data-why-stack>
+            <div class="pps-about-cards-mobile-sticky">
+                <p class="pps-eyebrow">What We Do</p>
+                <h2>Independent Advice Across Major Manufacturers</h2>
+                <div class="pps-about-cards-mobile-stage" data-why-stack-stage>
+                    <?php foreach ($about_cards as $item) : ?>
+                        <article class="pps-card pps-support-card pps-about-cards-mobile-card" data-why-card>
+                            <div class="pps-about-card-icon">
+                                <?php echo wp_kses($about_icon_svg((string) ($item['icon'] ?? '')), $svg_allowed); ?>
+                            </div>
+                            <h3><?php echo esc_html($item['title']); ?></h3>
+                            <p><?php echo esc_html($item['description']); ?></p>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div
+                class="pps-about-cards-mobile-track"
+                data-why-stack-track
+                style="height: <?php echo esc_attr(max(0, (count($about_cards) - 1) * 70)); ?>svh;"
+                aria-hidden="true"
+            ></div>
+        </div>
         <p class="pps-section-intro">
             Our customers include universities, hospitals, city and county councils, corporate organisations, electrical contractors, IT resellers, project management companies and consultants. Our goal is always the same: the highest level of service and support by combining practical expertise with dedicated care.
         </p>
