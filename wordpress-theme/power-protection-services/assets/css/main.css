@@ -2817,8 +2817,18 @@ body.page-about .pps-hero {
   list-style: none;
   margin: 0 0 0 8px;
   padding: 0 0 0 40px;
-  border-left: 2px solid #d3dced;
+  position: relative;
   display: grid;
+}
+
+.pps-about-timeline-list::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 10px;
+  width: 2px;
+  background: #d3dced;
 }
 
 .pps-about-timeline-list li {
@@ -2843,7 +2853,7 @@ body.page-about .pps-hero {
   width: 16px;
   height: 16px;
   border-radius: 999px;
-  border: 2px solid #eef3fb;
+  border: 0;
   background: #b9c7df;
   transition: background-color 0.25s ease;
 }
@@ -3058,6 +3068,7 @@ body.page-about .pps-hero {
     left: 36px;
     right: auto;
     top: 26px;
+    bottom: auto;
     height: 2px;
     background: #d3dced;
     width: calc(
