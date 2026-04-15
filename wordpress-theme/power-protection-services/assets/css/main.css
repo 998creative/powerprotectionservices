@@ -3104,12 +3104,12 @@ body.page-about .pps-hero {
   }
 
   .pps-about-timeline-list li:first-child::before {
-    left: -8px;
+    left: 0;
     transform: none;
   }
 
   .pps-about-timeline-list li:last-child::before {
-    left: calc(100% - 8px);
+    left: calc(100% - 16px);
     transform: none;
   }
 
