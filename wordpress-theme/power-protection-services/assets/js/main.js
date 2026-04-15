@@ -980,7 +980,6 @@
     }
 
     const isMobileViewport = () => window.matchMedia('(max-width: 767px)').matches;
-    const stickyTopOffset = 80;
     const mobileCardOffset = 20;
     const mobileCardStartY = 520;
     let ticking = false;
@@ -1018,6 +1017,16 @@
 
         const stackRect = stack.getBoundingClientRect();
         const scrollableDistance = track.offsetHeight;
+        const stickyWrapper = stage.closest(
+          '.pps-home-why-mobile-sticky, .pps-about-cards-mobile-sticky'
+        );
+        let stickyTopOffset = 80;
+        if (stickyWrapper instanceof HTMLElement) {
+          const parsedTop = Number.parseFloat(window.getComputedStyle(stickyWrapper).top);
+          if (!Number.isNaN(parsedTop)) {
+            stickyTopOffset = parsedTop;
+          }
+        }
 
         let mobileProgress = 0;
         if (scrollableDistance > 0) {
