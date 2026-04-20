@@ -58,7 +58,7 @@ const TrustBar = ({ inHero = false }: TrustBarProps) => {
 
   return (
     <section className={sectionClassName}>
-      <div className="mx-auto max-w-[1252px] px-6">
+      <div className="mx-auto max-w-[1352px] px-6">
         <div className="rounded-2xl border border-white/10 bg-[#1B2236] px-5 py-6 shadow-[0_28px_80px_rgba(0,0,0,0.35)] sm:px-8 sm:py-8">
           <p className="text-center text-xs uppercase tracking-[0.2em] text-zinc-400">
             Independent suppliers of all major UPS manufacturers

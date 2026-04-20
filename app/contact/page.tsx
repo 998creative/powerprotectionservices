@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="overflow-x-clip bg-[#0a0a0f] text-zinc-100">
-      <section className="relative min-h-[32rem] overflow-hidden border-b border-white/10 bg-[#0a0a0f] sm:h-[36rem] lg:h-[40rem]">
+      <section className="relative h-[32rem] overflow-hidden border-b border-white/10 bg-[#0a0a0f] sm:h-[36rem] lg:h-[40rem]">
         <div className="absolute inset-0 z-0">
           <Image
             src="/pps-stock-images/hero-datacenter-brett-4508751.jpg"
@@ -31,39 +31,43 @@ export default function ContactPage() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-36 bg-gradient-to-t from-[#0a0a0f] to-transparent" />
         <div className="pointer-events-none absolute -top-24 right-[-14rem] z-20 h-[28rem] w-[28rem] rounded-full border border-white/10 opacity-60" />
         <div className="pointer-events-none absolute -bottom-20 left-[-8rem] z-20 h-[20rem] w-[20rem] rounded-full border border-[#0066ff]/20" />
-        <div className="relative z-30 mx-auto max-w-[1252px] px-6 pb-14 pt-24 sm:pb-16 sm:pt-28 lg:pb-18 lg:pt-32">
-          <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">
-            Contact Power Protection Services
-          </p>
-          <h1 className="mt-4 max-w-4xl text-5xl font-semibold leading-tight tracking-tight text-white sm:text-6xl">
-            Speak to our UPS &amp; power protection team
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">
-            Need a new UPS system, battery replacements or generator support?
-            Use the form below and we&apos;ll respond within one business day.
-          </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a href="tel:01488685207" className="btn-primary">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-                className="mr-2 h-4 w-4 shrink-0 stroke-current"
+        <div className="relative z-30 mx-auto flex h-full max-w-[1352px] items-center px-6 py-16 sm:py-20">
+          <div>
+            <div className="max-w-4xl border-l-4 border-[#0066ff] pl-6 sm:pl-8">
+              <p className="mb-6 text-sm uppercase tracking-[0.22em] text-zinc-400">
+                CONTACT
+              </p>
+              <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
+                Speak to our UPS &amp; power protection team
+              </h1>
+              <p className="mt-8 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">
+                Need a new UPS system, battery replacements or generator support?
+                Use the form below and we&apos;ll respond within one business day.
+              </p>
+            </div>
+            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <a href="tel:01488685207" className="btn-primary">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                  className="mr-2 h-4 w-4 shrink-0 stroke-current"
+                >
+                  <path
+                    d="M7.8 4.8 10.4 7c.6.5.8 1.4.4 2l-1.1 1.8c1 2 2.7 3.7 4.7 4.7l1.8-1.1c.7-.4 1.5-.2 2 .4l2.2 2.6c.6.7.5 1.8-.3 2.3-1 .7-2.2 1.1-3.4 1-2.4-.1-5.5-1.4-8.3-4.2S4.3 13.6 4.2 11.2c0-1.2.3-2.4 1-3.4.6-.8 1.6-.9 2.3-.3Z"
+                    strokeWidth="1.8"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Call 01488 685207
+              </a>
+              <a
+                href="mailto:contact@powerprotectionservices.co.uk"
+                className="btn-secondary"
               >
-                <path
-                  d="M7.8 4.8 10.4 7c.6.5.8 1.4.4 2l-1.1 1.8c1 2 2.7 3.7 4.7 4.7l1.8-1.1c.7-.4 1.5-.2 2 .4l2.2 2.6c.6.7.5 1.8-.3 2.3-1 .7-2.2 1.1-3.4 1-2.4-.1-5.5-1.4-8.3-4.2S4.3 13.6 4.2 11.2c0-1.2.3-2.4 1-3.4.6-.8 1.6-.9 2.3-.3Z"
-                  strokeWidth="1.8"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              Call 01488 685207
-            </a>
-            <a
-              href="mailto:contact@powerprotectionservices.co.uk"
-              className="btn-secondary"
-            >
-              Email Us
-            </a>
+                Email Us
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -71,7 +75,7 @@ export default function ContactPage() {
       <ContactSection />
 
       <section className="border-t border-[#d9e1f1] bg-white pb-20 md:pb-28">
-        <div className="mx-auto max-w-[1252px] px-6 pt-16 md:pt-20">
+        <div className="mx-auto max-w-[1352px] px-6 pt-16 md:pt-20">
           <p className="text-xs uppercase tracking-[0.2em] text-[#4f6287]">
             Find Us
           </p>

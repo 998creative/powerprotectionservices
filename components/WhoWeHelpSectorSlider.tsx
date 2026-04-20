@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export type WhoWeHelpSector = {
@@ -8,6 +9,7 @@ export type WhoWeHelpSector = {
   description: string;
   imageSrc: string;
   imageAlt: string;
+  href: `/who-can-we-help/${string}/`;
   highlights: string[];
 };
 
@@ -79,7 +81,7 @@ const WhoWeHelpSectorSlider = ({ sectors }: WhoWeHelpSectorSliderProps) => {
         </div>
       </div>
 
-      <div className="relative left-1/2 mt-8 w-screen -translate-x-1/2 overflow-visible pb-1 pl-6 md:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))]">
+      <div className="relative left-1/2 mt-8 w-screen -translate-x-1/2 overflow-visible pb-1 pl-6 md:pl-[max(1.5rem,calc((100vw-78rem)/2+1.5rem))]">
         <div className="overflow-visible">
           <div
             className="flex items-stretch transition-transform duration-500 ease-out"
@@ -127,6 +129,9 @@ const WhoWeHelpSectorSlider = ({ sectors }: WhoWeHelpSectorSliderProps) => {
                       </li>
                     ))}
                   </ul>
+                  <Link href={sector.href} className="btn-tertiary mt-auto self-start">
+                    Learn More
+                  </Link>
                 </div>
               </article>
             ))}

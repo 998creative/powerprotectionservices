@@ -153,7 +153,7 @@ const WhyChooseUsSection = () => {
 
   return (
     <section id="why-us" className="border-b border-white/10 bg-[#0d1016] pb-[50px]">
-      <div className="mx-auto max-w-[1252px] px-6 py-20 md:py-28">
+      <div className="mx-auto max-w-[1352px] px-6 py-20 md:py-28">
         <p className="hidden text-xs uppercase tracking-[0.2em] text-zinc-400 md:block">
           Why Us
         </p>

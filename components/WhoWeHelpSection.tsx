@@ -13,6 +13,7 @@ type Sector = {
   description: string;
   imageSrc: string;
   imageAlt: string;
+  href: `/who-can-we-help/${string}/`;
   icon:
     | "healthcare"
     | "education"
@@ -24,52 +25,58 @@ type Sector = {
 
 const sectors: Sector[] = [
   {
+    title: "Small and Medium Businesses",
+    description:
+      "Scalable, practical backup power support for growing SMEs.",
+    imageSrc: "/who-we-help/smb-proxyclick-2451566.jpg",
+    imageAlt: "Small business office setting representing SME organisations",
+    href: "/who-can-we-help/medium-business/",
+    icon: "smb",
+  },
+  {
+    title: "Coorporate Organisations",
+    description:
+      "Business continuity solutions for commercial and multi-site organisations.",
+    imageSrc: "/who-we-help/corporate-divinetechygirl-1181406.jpg",
+    imageAlt: "Modern office environment representing corporate organisations",
+    href: "/who-can-we-help/corporate/",
+    icon: "corporate",
+  },
+  {
+    title: "Government and Local Council",
+    description:
+      "Resilient UPS support for councils, civic buildings and public services.",
+    imageSrc: "/who-we-help/local-government-fotios-2130031.jpg",
+    imageAlt: "City civic area representing local government organisations",
+    href: "/who-can-we-help/government-and-local-council/",
+    icon: "government",
+  },
+  {
+    title: "Universities and Education",
+    description:
+      "Reliable backup for campus IT, lecture facilities and education infrastructure.",
+    imageSrc: "/who-we-help/universities-ollie-8793386.jpg",
+    imageAlt: "Large lecture room representing universities and education sites",
+    href: "/who-can-we-help/universities-and-education/",
+    icon: "education",
+  },
+  {
+    title: "Telecoms Business",
+    description:
+      "Project-ready UPS expertise for IT providers and delivery partners.",
+    imageSrc: "/who-we-help/it-cookiecutter-17489156.jpg",
+    imageAlt: "Critical IT hardware close-up representing resellers and contractors",
+    href: "/who-can-we-help/telecoms-business/",
+    icon: "it",
+  },
+  {
     title: "Healthcare & NHS",
     description:
       "Clinical power protection for hospitals, labs and patient-critical systems.",
     imageSrc: "/who-we-help/hospitals-contact-13176450.jpg",
     imageAlt: "Hospital environment representing healthcare sector infrastructure",
+    href: "/who-can-we-help/healthcare-and-nhs/",
     icon: "healthcare",
-  },
-  {
-    title: "Universities & Education",
-    description:
-      "Reliable backup for campus IT, lecture facilities and education infrastructure.",
-    imageSrc: "/who-we-help/universities-ollie-8793386.jpg",
-    imageAlt: "Large lecture room representing universities and education sites",
-    icon: "education",
-  },
-  {
-    title: "Local Government",
-    description:
-      "Resilient UPS support for councils, civic buildings and public services.",
-    imageSrc: "/who-we-help/local-government-fotios-2130031.jpg",
-    imageAlt: "City civic area representing local government organisations",
-    icon: "government",
-  },
-  {
-    title: "Corporate Organisations",
-    description:
-      "Business continuity solutions for commercial and multi-site organisations.",
-    imageSrc: "/who-we-help/corporate-divinetechygirl-1181406.jpg",
-    imageAlt: "Modern office environment representing corporate organisations",
-    icon: "corporate",
-  },
-  {
-    title: "IT Resellers & Contractors",
-    description:
-      "Project-ready UPS expertise for IT providers and delivery partners.",
-    imageSrc: "/who-we-help/it-cookiecutter-17489156.jpg",
-    imageAlt: "Critical IT hardware close-up representing resellers and contractors",
-    icon: "it",
-  },
-  {
-    title: "Small & Medium Businesses",
-    description:
-      "Scalable, practical backup power support for growing SMEs.",
-    imageSrc: "/who-we-help/smb-proxyclick-2451566.jpg",
-    imageAlt: "Small business office setting representing SME organisations",
-    icon: "smb",
   },
 ];
 
@@ -184,7 +191,7 @@ const WhoWeHelpSection = ({
           : "overflow-hidden border-b border-white/10 bg-[#0a0a0f]"
       }
     >
-      <div className="mx-auto max-w-[1252px] px-6 py-20 md:py-28">
+      <div className="mx-auto max-w-[1352px] px-6 py-20 md:py-28">
         <div
           className={
             isLight
@@ -213,12 +220,13 @@ const WhoWeHelpSection = ({
           </p>
           <div className="mt-7 grid grid-cols-2 gap-3 lg:grid-cols-3">
             {sectors.map((sector) => (
-              <div
+              <Link
                 key={sector.title}
+                href={sector.href}
                 className={
                   isLight
-                    ? "group overflow-hidden rounded-md border border-[#d6dff0] bg-[#e9eff9] transition-all duration-300 hover:-translate-y-1 hover:border-[#0066ff]/70 hover:shadow-[0_12px_30px_rgba(0,102,255,0.2)]"
-                    : "group overflow-hidden rounded-md border border-white/10 bg-[#121b2a] transition-all duration-300 hover:-translate-y-1 hover:border-[#0066ff]/70 hover:shadow-[0_12px_30px_rgba(0,102,255,0.2)]"
+                    ? "group overflow-hidden rounded-md border border-[#d6dff0] bg-[#e9eff9] transition-all duration-300 hover:-translate-y-1 hover:border-[#0066ff]/70 hover:shadow-[0_12px_30px_rgba(0,102,255,0.2)] focus-visible:-translate-y-1 focus-visible:border-[#0066ff]/70 focus-visible:shadow-[0_12px_30px_rgba(0,102,255,0.2)]"
+                    : "group overflow-hidden rounded-md border border-white/10 bg-[#121b2a] transition-all duration-300 hover:-translate-y-1 hover:border-[#0066ff]/70 hover:shadow-[0_12px_30px_rgba(0,102,255,0.2)] focus-visible:-translate-y-1 focus-visible:border-[#0066ff]/70 focus-visible:shadow-[0_12px_30px_rgba(0,102,255,0.2)]"
                 }
               >
                 <div className="relative h-32 w-full md:h-40">
@@ -237,15 +245,15 @@ const WhoWeHelpSection = ({
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-4 text-center">
                     <SectorIcon icon={sector.icon} />
-                    <span className="text-sm font-semibold text-zinc-100 transition-all duration-300 group-hover:translate-y-1 group-hover:opacity-0 sm:text-base">
+                    <span className="text-sm font-semibold text-zinc-100 transition-all duration-300 group-hover:translate-y-1 group-hover:opacity-0 group-focus-visible:translate-y-1 group-focus-visible:opacity-0 sm:text-base">
                       {sector.title}
                     </span>
-                    <span className="pointer-events-none absolute left-1/2 top-1/2 w-[86%] -translate-x-1/2 text-sm leading-relaxed text-zinc-100 opacity-0 transition-all duration-300 group-hover:translate-y-3 group-hover:opacity-100">
+                    <span className="pointer-events-none absolute left-1/2 top-1/2 w-[86%] -translate-x-1/2 text-sm leading-relaxed text-zinc-100 opacity-0 transition-all duration-300 group-hover:translate-y-3 group-hover:opacity-100 group-focus-visible:translate-y-3 group-focus-visible:opacity-100">
                       {sector.description}
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-start md:justify-end">

@@ -162,7 +162,7 @@ const AboutTimeline = () => {
       <div className="pointer-events-none absolute -right-28 -top-20 h-[20rem] w-[20rem] rounded-full border border-[#d5e0f2]" />
       <div className="pointer-events-none absolute -bottom-24 -left-20 h-[16rem] w-[16rem] rounded-full border border-[#dbe5f4]" />
 
-      <div className="relative z-10 mx-auto max-w-[1252px] px-6">
+      <div className="relative z-10 mx-auto max-w-[1352px] px-6">
         <p className="text-xs uppercase tracking-[0.2em] text-[#4f6287]">Our Journey</p>
         <h2 className="mt-3 text-4xl font-semibold tracking-tight text-[#0b1324] sm:text-5xl">
           Timeline of Growth

@@ -24,7 +24,7 @@ export const testimonials: TestimonialItem[] = [
     quote:
       "Their maintenance support has materially reduced risk across our estate. Preventive visits are proactive, reporting is clear, and any faults are prioritised quickly, which has given us far greater confidence in our backup power resilience during critical service windows.",
     name: "Operations Director",
-    role: "Local Government",
+    role: "Government and Local Council",
     company: "Council Services",
   },
   {

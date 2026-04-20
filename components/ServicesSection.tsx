@@ -2,65 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-type ServiceItem = {
-  title: string;
-  description: string;
-  imageSrc: string;
-  imageAlt: string;
-  href: string;
-};
-
-const services: ServiceItem[] = [
-  {
-    title: "UPS Systems Installation, Supply & Relocation",
-    description:
-      "Supply, installation and relocation of uninterruptible power supply (UPS) systems across the UK, sized and commissioned for your load requirements.",
-    imageSrc: "/pps-stock-images/services-ups.jpg",
-    imageAlt: "Rows of server racks in a data centre environment",
-    href: "/services/ups-systems-installation-supply-relocation",
-  },
-  {
-    title: "Standby Generator Installation & Integration",
-    description:
-      "Generator supply, installation and integration for sites requiring extended backup runtime beyond UPS coverage.",
-    imageSrc: "/pps-stock-images/services-standby.jpg",
-    imageAlt: "Critical power infrastructure cabinets in an industrial environment",
-    href: "#contact",
-  },
-  {
-    title: "Commercial Electrical Installation",
-    description:
-      "Factory-trained engineers deliver commercial electrical installation, commissioning and certification to NICEIC standards.",
-    imageSrc: "/pps-stock-images/services-full-installation.jpg",
-    imageAlt: "Modern commercial workspace prepared for technical installation works",
-    href: "#contact",
-  },
-  {
-    title: "UPS Maintenance, Testing & Health Checks",
-    description:
-      "Tailored maintenance plans with UPS testing, battery health checks and scheduled support visits to maintain resilience.",
-    imageSrc: "/pps-stock-images/services-maintenance.jpg",
-    imageAlt: "Technical team collaborating in an office support environment",
-    href: "#contact",
-  },
-  {
-    title: "UPS Battery Replacement & Supply",
-    description:
-      "Battery supply, testing and replacement for existing UPS systems to maintain reliable runtime and system performance.",
-    imageSrc: "/pps-stock-images/services-batteries.jpg",
-    imageAlt: "Close-up of critical power hardware and infrastructure panels",
-    href: "#contact",
-  },
-  {
-    title: "Power Protection Site Surveys & Assessments",
-    description:
-      "Site surveys and technical assessments to define your power protection requirements, site constraints and implementation approach.",
-    imageSrc: "/pps-stock-images/services-site-surveys.jpg",
-    imageAlt: "Urban site environment being assessed for infrastructure planning",
-    href: "#contact",
-  },
-];
+import { services } from "../lib/services";
 
 const getCardsPerView = (width: number) => {
   if (width < 768) {
@@ -97,7 +39,7 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="border-b border-white/10 bg-[#f4f7fb] text-[#0c1220]">
-      <div className="mx-auto max-w-[1252px] px-6 pt-20 md:pt-28">
+      <div className="mx-auto max-w-[1352px] px-6 pt-20 md:pt-28">
         <p className="text-xs uppercase tracking-[0.2em] text-[#4f6287]">Core Services</p>
         <h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
           UPS &amp; Power Protection Services
@@ -143,7 +85,7 @@ const ServicesSection = () => {
         </div>
       </div>
 
-      <div className="mt-8 overflow-visible pb-20 pl-6 md:pb-28 md:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))]">
+      <div className="mt-8 overflow-visible pb-20 pl-6 md:pb-28 md:pl-[max(1.5rem,calc((100vw-78rem)/2+1.5rem))]">
         <div className="overflow-visible">
           <div
             className="flex transition-transform duration-500 ease-out"

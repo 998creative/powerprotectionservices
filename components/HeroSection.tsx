@@ -25,7 +25,7 @@ const HeroSection = () => {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-44 bg-gradient-to-t from-[#0a0a0f] to-transparent" />
       <div className="pointer-events-none absolute -top-28 right-[-14rem] z-20 h-[34rem] w-[34rem] rounded-full border border-white/10 opacity-60" />
       <div className="pointer-events-none absolute bottom-[-18rem] left-[-10rem] z-20 h-[30rem] w-[30rem] rounded-full border border-[#0066ff]/25" />
-      <div className="relative z-30 mx-auto max-w-[1252px] px-6 pb-16 pt-36 sm:pb-20 sm:pt-40 lg:pb-24 lg:pt-48">
+      <div className="relative z-30 mx-auto max-w-[1352px] px-6 pb-16 pt-36 sm:pb-20 sm:pt-40 lg:pb-24 lg:pt-48">
         <div className="max-w-4xl border-l-4 border-[#0066ff] pl-6 sm:pl-8">
           <p className="mb-6 text-sm uppercase tracking-[0.22em] text-zinc-400">
             NICEIC Approved Contractor

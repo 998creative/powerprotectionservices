@@ -37,7 +37,7 @@ const TestimonialsSection = () => {
       id="testimonials"
       className="overflow-hidden border-b border-[#d9e1f1] bg-[#f4f8fe] text-[#0c1220]"
     >
-      <div className="mx-auto max-w-[1252px] px-6 py-20 md:py-28">
+      <div className="mx-auto max-w-[1352px] px-6 py-20 md:py-28">
         <p className="text-xs uppercase tracking-[0.2em] text-[#4f6287]">
           Trusted by many for over 25 years
         </p>

@@ -75,7 +75,7 @@ const ProcessStepsSlider = ({ steps }: ProcessStepsSliderProps) => {
         </div>
       </div>
 
-      <div className="relative left-1/2 mt-8 w-screen -translate-x-1/2 overflow-visible pb-1 pl-6 md:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))]">
+      <div className="relative left-1/2 mt-8 w-screen -translate-x-1/2 overflow-visible pb-1 pl-6 md:pl-[max(1.5rem,calc((100vw-78rem)/2+1.5rem))]">
         <div className="overflow-visible">
           <ol
             className="flex transition-transform duration-500 ease-out"

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function AboutUsPage() {
   return (
     <main className="overflow-x-clip bg-[#0a0a0f] text-zinc-100">
-      <section className="relative min-h-[32rem] overflow-hidden border-b border-white/10 bg-[#0a0a0f] sm:h-[36rem] lg:h-[40rem]">
+      <section className="relative h-[32rem] overflow-hidden border-b border-white/10 bg-[#0a0a0f] sm:h-[36rem] lg:h-[40rem]">
         <div className="absolute inset-0 z-0">
           <Image
             src="/pps-stock-images/about-office.jpg"
@@ -28,22 +28,28 @@ export default function AboutUsPage() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-[#0a0a0f] to-transparent" />
         <div className="pointer-events-none absolute -top-24 right-[-14rem] z-20 h-[28rem] w-[28rem] rounded-full border border-white/10 opacity-60" />
 
-        <div className="relative z-30 mx-auto max-w-[1252px] px-6 pb-14 pt-24 sm:pb-16 sm:pt-28 lg:pb-18 lg:pt-32">
-          <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">About Us</p>
-          <h1 className="mt-4 max-w-4xl text-5xl font-semibold leading-tight tracking-tight text-white sm:text-6xl">
-            Independent power protection specialists for over 25 years
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">
-            We help organisations protect critical systems with dependable UPS
-            and backup power solutions.
-          </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact#contact" className="btn-primary">
-              Speak to Our Team
-            </Link>
-            <Link href="/#services" className="btn-secondary">
-              View Services
-            </Link>
+        <div className="relative z-30 mx-auto flex h-full max-w-[1352px] items-center px-6 py-16 sm:py-20">
+          <div>
+            <div className="max-w-4xl border-l-4 border-[#0066ff] pl-6 sm:pl-8">
+              <p className="mb-6 text-sm uppercase tracking-[0.22em] text-zinc-400">
+                ABOUT US
+              </p>
+              <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
+                Independent power protection specialists for over 25 years
+              </h1>
+              <p className="mt-8 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">
+                We help organisations protect critical systems with dependable UPS
+                and backup power solutions.
+              </p>
+            </div>
+            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link href="/contact#contact" className="btn-primary">
+                Speak to Our Team
+              </Link>
+              <Link href="/#services" className="btn-secondary">
+                View Services
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -51,7 +57,7 @@ export default function AboutUsPage() {
       <section className="relative border-b border-[#d9e1f1] bg-[#EEF3FB] py-20 text-[#0c1220] md:py-28">
         <div className="pointer-events-none absolute -left-36 -top-40 h-[34rem] w-[34rem] rounded-full border border-[#cad7ee]" />
 
-        <div className="relative z-10 mx-auto grid max-w-[1252px] gap-14 px-6 md:grid-cols-2 md:items-center">
+        <div className="relative z-10 mx-auto grid max-w-[1352px] gap-14 px-6 md:grid-cols-2 md:items-center">
           <div>
             <h2 className="text-4xl font-semibold leading-tight tracking-tight text-[#0b1324] sm:text-5xl">
               Friendly specialists. Personal support.
@@ -89,7 +95,7 @@ export default function AboutUsPage() {
         <div className="pointer-events-none absolute -right-44 -top-44 h-[38rem] w-[38rem] rounded-full border border-[#dce6f5]" />
         <div className="pointer-events-none absolute -bottom-32 -left-32 h-[20rem] w-[20rem] rounded-full border border-[#e7edf8]" />
 
-        <div className="relative z-10 mx-auto max-w-[1252px] px-6 text-[#0c1220]">
+        <div className="relative z-10 mx-auto max-w-[1352px] px-6 text-[#0c1220]">
           <p className="hidden text-xs uppercase tracking-[0.2em] text-[#4f6287] md:block">
             What We Do
           </p>
@@ -113,7 +119,7 @@ export default function AboutUsPage() {
       <section className="relative overflow-hidden border-y border-white/10 bg-[#0c162b] py-16">
         <div className="pointer-events-none absolute -right-20 -top-16 z-10 h-56 w-56 rounded-full border border-white/15" />
 
-        <div className="relative z-20 mx-auto flex max-w-[1252px] flex-col gap-6 px-6 text-center sm:text-left md:flex-row md:items-center md:justify-between">
+        <div className="relative z-20 mx-auto flex max-w-[1352px] flex-col gap-6 px-6 text-center sm:text-left md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Let&apos;s plan the right solution for your site.

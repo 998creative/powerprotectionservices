@@ -7,7 +7,7 @@ const AboutSection = () => {
       className="relative overflow-hidden border-b border-[#d9e1f1] bg-[#EEF3FB] text-[#0c1220]"
     >
       <div className="pointer-events-none absolute -top-16 right-[-12rem] h-64 w-64 rounded-full border border-[#d3dced]" />
-      <div className="mx-auto grid max-w-[1252px] gap-14 px-6 pb-20 pt-48 sm:pt-64 md:grid-cols-2 md:items-center md:pb-28">
+      <div className="mx-auto grid max-w-[1352px] gap-14 px-6 pb-20 pt-48 sm:pt-64 md:grid-cols-2 md:items-center md:pb-28">
         <div className="order-2 md:order-1">
           <div className="relative rounded-3xl border border-[#d6dff0] bg-[#f8fbff] p-3 sm:p-5">
             <div className="pointer-events-none absolute inset-5 rounded-[1.25rem] border border-[#dce4f2]" />

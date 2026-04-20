@@ -1,26 +1,19 @@
 "use client";
 
 import { Fragment, FormEvent, useState } from "react";
+import { services } from "../lib/services";
 
 type Step = 1 | 2 | 3;
 
-const serviceOptions = [
-  "UPS Systems Installation, Supply & Relocation",
-  "Standby Generator Installation & Integration",
-  "Commercial Electrical Installation",
-  "UPS Maintenance, Testing & Health Checks",
-  "UPS Battery Replacement & Supply",
-  "Power Protection Site Surveys & Assessments",
-  "Other",
-];
+const serviceOptions = [...services.map((service) => service.title), "Other"];
 
 const sectorOptions = [
   "Hospitals & Healthcare",
-  "Universities & Education",
-  "Local Government",
-  "Corporate Organisations",
+  "Universities and Education",
+  "Government and Local Council",
+  "Coorporate Organisations",
   "IT Resellers & Contractors",
-  "Small & Medium Businesses",
+  "Small and Medium Businesses",
   "Other",
 ];
 
@@ -112,10 +105,10 @@ const ContactSection = () => {
   return (
     <section id="contact" className="relative overflow-hidden bg-[#EEF3FB]">
       <div className="pointer-events-none absolute right-[-14rem] top-20 h-96 w-96 rounded-full border border-[#d3dced]" />
-      <div className="mx-auto grid max-w-[1252px] gap-12 px-6 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="mx-auto grid max-w-[1352px] gap-12 px-6 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="lg:col-start-1 lg:row-start-1">
           <h2 className="text-4xl font-semibold tracking-tight text-[#0b1324] sm:text-5xl">
-            Get a Free UPS Quote
+            Get in touch
           </h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#3f4e6e]">
             Tell us about your UPS, generator or emergency lighting

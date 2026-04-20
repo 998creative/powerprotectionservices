@@ -1,45 +1,85 @@
-name: Deploy PPS Theme
+name: Deploy WordPress Theme (998 Toolkit)
 
 on:
   push:
     branches:
       - main
     paths:
-      - "wordpress-theme/power-protection-services/**"
+      - "wordpress-theme/**"
       - ".github/workflows/wp-theme-deploy.yml"
   workflow_dispatch:
 
 concurrency:
-  group: pps-theme-deploy-live
+  group: wp-theme-deploy-${{ github.repository }}
   cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     env:
-      THEME_DIR: wordpress-theme/power-protection-services
       WP_THEME_SLUG: ${{ vars.WP_THEME_SLUG }}
+      WP_DEPLOY_MAX_ATTEMPTS: ${{ vars.WP_DEPLOY_MAX_ATTEMPTS }}
+      WP_DEPLOY_RETRY_BASE_SECONDS: ${{ vars.WP_DEPLOY_RETRY_BASE_SECONDS }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Build theme zip
+        shell: bash
         run: |
+          set -euo pipefail
+
+          mapfile -t THEME_DIRS < <(
+            find wordpress-theme -mindepth 1 -maxdepth 1 -type d | while read -r DIR; do
+              if [ -f "$DIR/style.css" ]; then
+                echo "$DIR"
+              fi
+            done | sort
+          )
+          if [ "${#THEME_DIRS[@]}" -eq 0 ]; then
+            echo "No theme folder found in wordpress-theme/ (expected a folder containing style.css)."
+            exit 1
+          fi
+          if [ "${#THEME_DIRS[@]}" -gt 1 ]; then
+            echo "Multiple theme folders found in wordpress-theme/. Keep one theme folder with style.css per repo."
+            printf '%s\n' "${THEME_DIRS[@]}"
+            exit 1
+          fi
+
+          THEME_DIR="${THEME_DIRS[0]}"
           test -d "$THEME_DIR"
-          cd wordpress-theme
-          zip -r theme.zip power-protection-services -x '*.DS_Store'
+
+          THEME_PARENT="$(dirname "$THEME_DIR")"
+          THEME_FOLDER="$(basename "$THEME_DIR")"
+
+          ZIP_PATH="$RUNNER_TEMP/theme.zip"
+          rm -f "$ZIP_PATH"
+
+          (
+            cd "$THEME_PARENT"
+            zip -r "$ZIP_PATH" "$THEME_FOLDER" -x '*.DS_Store' -x '__MACOSX/*'
+          )
+
+          echo "THEME_FOLDER=$THEME_FOLDER" >> "$GITHUB_ENV"
+          echo "ZIP_PATH=$ZIP_PATH" >> "$GITHUB_ENV"
 
       - name: Deploy to WordPress
+        shell: bash
         env:
           WP_DEPLOY_URL: ${{ secrets.WP_DEPLOY_URL }}
           WP_DEPLOY_TOKEN: ${{ secrets.WP_DEPLOY_TOKEN }}
         run: |
-          test -n "$WP_DEPLOY_URL"
-          test -n "$WP_DEPLOY_TOKEN"
-          THEME_SLUG="${WP_THEME_SLUG:-power-protection-services}"
+          set -euo pipefail
+          test -n "${WP_DEPLOY_URL:-}"
+          test -n "${WP_DEPLOY_TOKEN:-}"
+
+          THEME_SLUG="${WP_THEME_SLUG:-$THEME_FOLDER}"
           RESPONSE_BODY="$(mktemp)"
-          MAX_ATTEMPTS=5
+          MAX_ATTEMPTS="${WP_DEPLOY_MAX_ATTEMPTS:-5}"
+          RETRY_BASE_SECONDS="${WP_DEPLOY_RETRY_BASE_SECONDS:-5}"
           ATTEMPT=1
 
           while [ "$ATTEMPT" -le "$MAX_ATTEMPTS" ]; do
@@ -51,10 +91,10 @@ jobs:
                 --write-out "%{http_code}" \
                 -X POST "$WP_DEPLOY_URL" \
                 -H "x-wp-deploy-token: $WP_DEPLOY_TOKEN" \
-                -H "User-Agent: pps-theme-deployer/${GITHUB_SHA}" \
+                -H "User-Agent: wp-theme-deployer/${GITHUB_SHA}" \
                 -F "theme_slug=${THEME_SLUG}" \
                 -F "commit_sha=${GITHUB_SHA}" \
-                -F "theme_zip=@wordpress-theme/theme.zip;type=application/zip" \
+                -F "theme_zip=@${ZIP_PATH};type=application/zip" \
                 || true
             )"
 
@@ -68,7 +108,7 @@ jobs:
             cat "$RESPONSE_BODY" || true
 
             if [ "$ATTEMPT" -lt "$MAX_ATTEMPTS" ]; then
-              SLEEP_SECONDS=$((ATTEMPT * 5))
+              SLEEP_SECONDS=$((ATTEMPT * RETRY_BASE_SECONDS))
               echo "Retrying in ${SLEEP_SECONDS}s..."
               sleep "$SLEEP_SECONDS"
             fi

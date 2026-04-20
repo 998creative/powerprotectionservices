@@ -3,32 +3,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { services } from "../lib/services";
+import { whoCanWeHelpEntries } from "../lib/whoCanWeHelp";
 
 const quickLinks = [
-  { label: "About", href: "/about" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
   { label: "Services", href: "/#services" },
   { label: "Who We Help", href: "/who-we-help" },
-  { label: "Testimonials", href: "/#testimonials" },
-  { label: "Why Us", href: "/#why-us" },
+  { label: "Support & Aftercare Services", href: "/support" },
+  { label: "Manuals", href: "/manuals" },
+  { label: "FAQs", href: "/faqs" },
   { label: "Contact", href: "/contact" },
 ];
 
-const serviceLinks = [
-  {
-    label: "UPS Systems Installation, Supply & Relocation",
-    href: "/services/ups-systems-installation-supply-relocation",
-  },
-  { label: "Standby Generator Installation & Integration", href: "/#services" },
-  { label: "Commercial Electrical Installation", href: "/#services" },
-  { label: "UPS Maintenance, Testing & Health Checks", href: "/#services" },
-  { label: "UPS Battery Replacement & Supply", href: "/#services" },
-  { label: "Power Protection Site Surveys & Assessments", href: "/#services" },
-];
+const serviceLinks = services.map((service) => ({
+  label: service.title,
+  href: service.href,
+}));
+
+const sectorLinks = whoCanWeHelpEntries.map((entry) => ({
+  label: entry.title,
+  href: `/who-can-we-help/${entry.slug}/`,
+}));
 
 const mapsHref =
   "https://www.google.com/maps/search/?api=1&query=Power+Protection+Services+Ltd%2C+Unit+2+Neates+Yard%2C+Hungerford%2C+Berkshire+RG17+0NB";
 
-type MobileFooterSection = "quick-links" | "services" | "contact";
+type MobileFooterSection = "quick-links" | "services" | "who-we-help" | "contact";
 
 const SiteFooter = () => {
   const currentYear = new Date().getFullYear();
@@ -37,7 +39,7 @@ const SiteFooter = () => {
 
   return (
     <footer className="border-t border-white/10 bg-[#090b12] text-zinc-200">
-      <div className="mx-auto grid max-w-[1252px] gap-12 px-6 py-16 md:grid-cols-[1.2fr_0.9fr_1fr_1fr] md:gap-10">
+      <div className="mx-auto grid max-w-[1352px] gap-12 px-6 py-16 md:grid-cols-2 lg:grid-cols-[1.2fr_0.9fr_1fr_1fr_1fr] md:gap-10">
         <div>
           <Image
             src="/PPS%20LOGO%20secondary.svg"
@@ -81,6 +83,23 @@ const SiteFooter = () => {
           </p>
           <div className="mt-4 flex flex-col gap-3">
             {serviceLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="w-fit text-sm text-zinc-300 transition-colors hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="hidden md:block">
+          <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">
+            Who We Help
+          </p>
+          <div className="mt-4 flex flex-col gap-3">
+            {sectorLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -230,6 +249,38 @@ const SiteFooter = () => {
           <div className="rounded-md border border-white/10 bg-[#0d111b]">
             <button
               type="button"
+              aria-expanded={openSection === "who-we-help"}
+              onClick={() => setOpenSection("who-we-help")}
+              className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold text-zinc-200"
+            >
+              Who We Help
+              <span
+                aria-hidden="true"
+                className={`text-zinc-400 transition-transform ${
+                  openSection === "who-we-help" ? "rotate-180" : ""
+                }`}
+              >
+                ▾
+              </span>
+            </button>
+            {openSection === "who-we-help" ? (
+              <div className="flex flex-col gap-3 border-t border-white/10 px-4 py-3">
+                {sectorLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="w-fit text-sm text-zinc-300 transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
+
+          <div className="rounded-md border border-white/10 bg-[#0d111b]">
+            <button
+              type="button"
               aria-expanded={openSection === "contact"}
               onClick={() => setOpenSection("contact")}
               className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold text-zinc-200"
@@ -319,7 +370,7 @@ const SiteFooter = () => {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-[1252px] flex-col items-center gap-3 px-6 py-5 text-center text-xs text-zinc-400 sm:flex-row sm:items-center sm:justify-between sm:text-left">
+        <div className="mx-auto flex max-w-[1352px] flex-col items-center gap-3 px-6 py-5 text-center text-xs text-zinc-400 sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p>© {currentYear} Power Protection Services. All rights reserved.</p>
           <a
             href="https://998.co.uk"

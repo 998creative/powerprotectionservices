@@ -7,75 +7,81 @@ import WhoWeHelpSectorSlider, {
 
 const sectors: WhoWeHelpSector[] = [
   {
-    title: "Healthcare & NHS",
-    description:
-      "Power protection in clinical environments where failure can affect patient care and safety.",
-    imageSrc: "/who-we-help/hospitals-contact-13176450.jpg",
-    imageAlt: "Hospital and healthcare infrastructure environment",
-    highlights: [
-      "Support for theatres, emergency rooms, labs, imaging and monitoring systems",
-      "Specified for healthcare standards including HTM, BS7671 and IEC60601 applications",
-      "Designed for continuous operation with resilient backup architecture",
-    ],
-  },
-  {
-    title: "Universities & Education",
-    description:
-      "Power continuity solutions for schools, colleges and universities with critical teaching, research and campus IT systems.",
-    imageSrc: "/who-we-help/universities-ollie-8793386.jpg",
-    imageAlt: "University and education sector setting",
-    highlights: [
-      "Support for campus networks, labs, server rooms and lecture facilities",
-      "Practical solutions for both legacy systems and modern learning infrastructure",
-      "Planned maintenance and battery replacement to reduce disruption during term time",
-    ],
-  },
-  {
-    title: "Local Government",
-    description:
-      "Resilient UPS and backup power for councils and public service buildings where continuity and compliance both matter.",
-    imageSrc: "/who-we-help/local-government-fotios-2130031.jpg",
-    imageAlt: "Local government and council offices",
-    highlights: [
-      "Support for council offices, civic sites and essential public service operations",
-      "Delivery aligned with public sector governance, audit and procurement expectations",
-      "Full lifecycle support from design and installation to long-term maintenance",
-    ],
-  },
-  {
-    title: "Corporate Organisations",
-    description:
-      "Enterprise-grade power protection for business-critical data, services and multi-site operations.",
-    imageSrc: "/who-we-help/corporate-divinetechygirl-1181406.jpg",
-    imageAlt: "Corporate office environment",
-    highlights: [
-      "Built for data centre and enterprise infrastructure resilience",
-      "Turnkey delivery from survey and design to installation and commissioning",
-      "Ongoing maintenance with rapid-response and 24/7 support options",
-    ],
-  },
-  {
-    title: "IT Resellers & Contractors",
-    description:
-      "Technical project support for IT resellers, electrical contractors and delivery teams working on critical power installations.",
-    imageSrc: "/who-we-help/it-cookiecutter-17489156.jpg",
-    imageAlt: "IT and contractor power infrastructure",
-    highlights: [
-      "Assistance from specification and sizing through to commissioning and handover",
-      "Supports projects for data, network and telecoms-critical environments",
-      "Flexible supply and service options to meet programme and site constraints",
-    ],
-  },
-  {
-    title: "Small & Medium Businesses",
+    title: "Small and Medium Businesses",
     description:
       "Right-sized UPS protection for SMEs that need reliable day-to-day uptime without unnecessary complexity.",
     imageSrc: "/who-we-help/smb-proxyclick-2451566.jpg",
     imageAlt: "Small and medium business office",
+    href: "/who-can-we-help/medium-business/",
     highlights: [
-      "Protects offices, comms rooms, EPOS, servers and VoIP from outages and surges",
-      "Helps reduce downtime, data loss and disruption to customer delivery",
-      "Scales from small office needs to wider multi-site SME environments",
+      "Protects servers, gateways, storage, VoIP and other critical business systems",
+      "Helps reduce downtime, data loss and disruption to day-to-day operations",
+      "Scales with growth from single office setups to wider multi-site SME environments",
+    ],
+  },
+  {
+    title: "Coorporate Organisations",
+    description:
+      "Enterprise-grade power protection for data centres, business-critical services and multi-site operations.",
+    imageSrc: "/who-we-help/corporate-divinetechygirl-1181406.jpg",
+    imageAlt: "Corporate office environment",
+    href: "/who-can-we-help/corporate/",
+    highlights: [
+      "Built for enterprise infrastructure resilience across corporate environments",
+      "Turnkey delivery from survey and design through installation and commissioning",
+      "24/7 support and maintenance options with guaranteed response models",
+    ],
+  },
+  {
+    title: "Government and Local Council",
+    description:
+      "Reliable power protection for councils, government departments and critical public services.",
+    imageSrc: "/who-we-help/local-government-fotios-2130031.jpg",
+    imageAlt: "Local government and council offices",
+    href: "/who-can-we-help/government-and-local-council/",
+    highlights: [
+      "Support for council offices, civic sites and essential public service operations",
+      "Delivery aligned with public sector governance, audit and procurement expectations",
+      "Full lifecycle support from design and installation through long-term maintenance",
+    ],
+  },
+  {
+    title: "Universities and Education",
+    description:
+      "Reliable power protection for schools, colleges and universities with critical teaching, research and campus IT systems.",
+    imageSrc: "/who-we-help/universities-ollie-8793386.jpg",
+    imageAlt: "University and education sector setting",
+    href: "/who-can-we-help/universities-and-education/",
+    highlights: [
+      "Support for campus networks, labs, server rooms and lecture facilities",
+      "Resilience planning for mixed legacy and modern learning infrastructure",
+      "Ongoing maintenance and battery replacement to reduce disruption during term time",
+    ],
+  },
+  {
+    title: "Telecoms Business",
+    description:
+      "Technical support for IT resellers and contractors delivering telecoms and network-critical power projects.",
+    imageSrc: "/who-we-help/it-cookiecutter-17489156.jpg",
+    imageAlt: "IT and contractor power infrastructure",
+    href: "/who-can-we-help/telecoms-business/",
+    highlights: [
+      "Assistance from specification and sizing through to commissioning and handover",
+      "Support for network operations centres, telecoms infrastructure and remote sites",
+      "UPS, inverter, battery replacement and support options built for uptime",
+    ],
+  },
+  {
+    title: "Healthcare & NHS",
+    description:
+      "Power protection where failure is simply not an option in healthcare and NHS environments.",
+    imageSrc: "/who-we-help/hospitals-contact-13176450.jpg",
+    imageAlt: "Hospital and healthcare infrastructure environment",
+    href: "/who-can-we-help/healthcare-and-nhs/",
+    highlights: [
+      "Support for theatres, emergency rooms, labs, imaging and patient monitoring systems",
+      "Specified for healthcare standards including HTM, BS7671 and IEC60601 applications",
+      "Medical-grade UPS options and resilient backup architecture for continuous operation",
     ],
   },
 ];
@@ -102,7 +108,7 @@ const coverageExamples = [
 export const metadata: Metadata = {
   title: "Who We Help | Power Protection Services",
   description:
-    "Independent UPS and backup power support for Healthcare and NHS, Universities and Education, Local Government, Corporate Organisations, IT Resellers and Contractors, and Small and Medium Businesses across the UK.",
+    "Independent UPS and backup power support for Healthcare and NHS, Universities and Education, Government and Local Council, Coorporate Organisations, IT Resellers and Contractors, and Small and Medium Businesses across the UK.",
   keywords: [
     "who we help UPS",
     "business sectors UPS support",
@@ -136,23 +142,30 @@ export default function WhoWeHelpPage() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-[#0a0a0f] to-transparent" />
         <div className="pointer-events-none absolute -top-24 right-[-14rem] z-20 h-[28rem] w-[28rem] rounded-full border border-white/10 opacity-60" />
 
-        <div className="relative z-30 mx-auto flex h-full max-w-[1252px] flex-col justify-end px-6 pb-14 sm:pb-16 lg:pb-18">
-          <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">Who We Help</p>
-          <h1 className="mt-4 max-w-4xl text-5xl font-semibold leading-tight tracking-tight text-white sm:text-6xl">
-            Who we help across the UK
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">
-            We support healthcare, education, local government, corporate
-            organisations, IT partners and SMEs with independent UPS and backup
-            power services.
-          </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact#contact" className="btn-primary">
-              Speak to Our Team
-            </Link>
-            <Link href="/#services" className="btn-secondary">
-              View Services
-            </Link>
+        <div className="relative z-30 mx-auto flex h-full max-w-[1352px] items-center px-6 py-16 sm:py-20">
+          <div>
+            <div className="max-w-4xl border-l-4 border-[#0066ff] pl-6 sm:pl-8">
+              <p className="mb-6 text-sm uppercase tracking-[0.22em] text-zinc-400">
+                WHO WE HELP
+              </p>
+              <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
+                Who we help across the UK
+              </h1>
+              <p className="mt-8 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">
+                We support healthcare, education, government and local council,
+                corporate
+                organisations, IT partners and SMEs with independent UPS and backup
+                power services.
+              </p>
+            </div>
+            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link href="/contact#contact" className="btn-primary">
+                Speak to Our Team
+              </Link>
+              <Link href="/#services" className="btn-secondary">
+                View Services
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -160,7 +173,7 @@ export default function WhoWeHelpPage() {
       <section className="relative border-b border-[#d9e1f1] bg-[#EEF3FB] py-20 text-[#0c1220] md:py-28">
         <div className="pointer-events-none absolute -left-36 -top-40 h-[34rem] w-[34rem] rounded-full border border-[#cad7ee]" />
 
-        <div className="relative z-10 mx-auto max-w-[1252px] px-6">
+        <div className="relative z-10 mx-auto max-w-[1352px] px-6">
           <p className="text-xs uppercase tracking-[0.2em] text-[#4f6287]">
             Sectors We Serve
           </p>
@@ -181,7 +194,7 @@ export default function WhoWeHelpPage() {
         <div className="pointer-events-none absolute -right-44 -top-44 h-[38rem] w-[38rem] rounded-full border border-[#dce6f5]" />
         <div className="pointer-events-none absolute -bottom-32 -left-32 h-[20rem] w-[20rem] rounded-full border border-[#e7edf8]" />
 
-        <div className="relative z-10 mx-auto grid max-w-[1252px] gap-10 px-6 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+        <div className="relative z-10 mx-auto grid max-w-[1352px] gap-10 px-6 lg:grid-cols-[1fr_1.1fr] lg:items-start">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-[#4f6287]">
               UK Coverage
@@ -223,7 +236,7 @@ export default function WhoWeHelpPage() {
       <section className="relative overflow-hidden border-y border-white/10 bg-[#0c162b] py-16">
         <div className="pointer-events-none absolute -right-20 -top-16 z-10 h-56 w-56 rounded-full border border-white/15" />
 
-        <div className="relative z-20 mx-auto flex max-w-[1252px] flex-col gap-6 px-6 text-center sm:text-left md:flex-row md:items-center md:justify-between">
+        <div className="relative z-20 mx-auto flex max-w-[1352px] flex-col gap-6 px-6 text-center sm:text-left md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Need support for your organisation?
